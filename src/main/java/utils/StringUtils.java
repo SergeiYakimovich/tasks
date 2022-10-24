@@ -1,6 +1,7 @@
 package utils;
 
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -8,12 +9,27 @@ import static utils.NumberUtils.minOfNumbers;
 
 public class StringUtils {
 
+//    Заменить повторяющиеся слова множественным числом (+"s")
+//        List.of("dog", "cat", "pig", "dog", "pig") -> [cat, dogs, pigs]
+    public static List<String> changeDuplicatedWordsByAddingS(List<String> words) {
+        List<String> result = words.stream()
+                .collect(HashMap<String, Integer>::new, (m, c) -> {m.put(c, m.containsKey(c) ? (1 + m.get(c)) : 1);
+                }, HashMap::putAll)
+                .entrySet()
+                .stream()
+                .map(e -> (int) e.getValue() > 1 ? e.getKey() + "s" : e.getKey())
+                .collect(Collectors.toList());
+        return result;
+    }
+
+//    Посчитать слово как сумму ASCII
     public static int countWordAsASCII(String word) {
         return (int) Arrays.stream(word.split(""))
                 .mapToInt(c -> c.charAt(0))
                 .sum();
     }
 
+//    Проверить адрес на IPv4
     public Boolean isIPv4(String address) {
         String[] mas = address.split("\\.");
         if(mas.length != 4) {
@@ -34,6 +50,7 @@ public class StringUtils {
         return true;
     }
 
+//    Проверить код на ISBN
     public static Boolean validate_ISBN(String code) {
         Integer[] mas = Arrays.stream(code.split(""))
                 .filter(x -> !x.equals("-"))
@@ -46,6 +63,7 @@ public class StringUtils {
         return count % 11 == 0;
     }
 
+//    Проверить на открытые скобки
     public static Boolean hasOpenBrackets(String brackets) {
         int n1 = 0;
         int n2 = 0;
@@ -80,6 +98,7 @@ public class StringUtils {
         }
     }
 
+//    Вычислить расстояние Левенштейна (за сколько шагов можно перейти от слова1 к слову2)
     public static Integer levenshteinDistance(String s1, String s2) {
         int l1 = s1.length() + 1;
         int l2 = s2.length() + 1;
@@ -104,20 +123,6 @@ public class StringUtils {
     }
 
     public static List<String> removeCharFromListOfString(List<String> words, String character) {
-//        List<String> result = new ArrayList<>();
-//        for (String word : words) {
-//            int i = 0;
-//            while (i < word.length()) {
-//                if (word.substring(i, i + 1).equals(character)) {
-//                    word = word.substring(0, i) + word.substring(i + 1);
-//                } else {
-//                    i++;
-//                }
-//            }
-//            result.add(word);
-//        }
-//        return result;
-
         return words.stream()
                 .map(word -> {
                     return Arrays.stream(word.split(""))

@@ -10,6 +10,7 @@ import java.util.stream.Collectors;
 
 public class NumberUtils {
 
+//    Перевод латинских чисел
     public static Integer romanDigits(String str) {
         Map<String, Integer> table1 = new HashMap<>(Map.of(
                 "I", 1, "V", 5, "X", 10,
@@ -31,6 +32,7 @@ public class NumberUtils {
         return result;
     }
 
+//    Сортировка числа по цифрам
     public static Integer sortNumberByDigits(Integer num) {
         String[] mas = num.toString().split("");
         Arrays.sort(mas, Collections.reverseOrder());

@@ -7,6 +7,18 @@ import java.util.Map;
 
 public class MapUtils {
 
+    public static Map<String, Integer> countWordInList(List<String> arr) {
+        Map<String, Integer> res = new HashMap<>();
+        for(String word : arr) {
+            if(res.containsKey(word)) {
+                res.put(word, res.get(word) + 1);
+            } else {
+                res.put(word, 1);
+            }
+        }
+        return res;
+    }
+
     public static List<String> getTextOfUser(List<Map<String, String>> messages, String user) {
         List<Map<String, String>> testMessages = List.of(Map.of("user","vtm","text","Ruby is cool!"),
                 Map.of("user","solar05","text","Clojure too!"),
@@ -24,18 +36,6 @@ public class MapUtils {
             result.add("no messages!");
         }
         return result;
-    }
-
-    public static Map<String, Integer> countWordInList(List<String> arr) {
-        Map<String, Integer> res = new HashMap<>();
-        for(String word : arr) {
-            if(res.containsKey(word)) {
-                res.put(word, res.get(word) + 1);
-            } else {
-                res.put(word, 1);
-            }
-        }
-        return res;
     }
 
 }
