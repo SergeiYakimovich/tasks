@@ -3,6 +3,7 @@ package utils;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 import static utils.NumberUtils.minOfNumbers;
@@ -27,27 +28,6 @@ public class StringUtils {
         return (int) Arrays.stream(word.split(""))
                 .mapToInt(c -> c.charAt(0))
                 .sum();
-    }
-
-//    Проверить адрес на IPv4
-    public Boolean isIPv4(String address) {
-        String[] mas = address.split("\\.");
-        if(mas.length != 4) {
-            return false;
-        }
-        for(String item : mas) {
-            char[] chars = item.toCharArray();
-            for(char c : chars) {
-                if(!Character.isDigit(c)) {
-                    return false;
-                }
-            }
-            int n = Integer.parseInt(item);
-            if (n > 255) {
-                return false;
-            }
-        }
-        return true;
     }
 
 //    Проверить код на ISBN
@@ -149,4 +129,59 @@ public class StringUtils {
                 .collect(Collectors.joining(" "));
     }
 
+    //    Последовательность Конвэя "Посмотри и Скажи" - это последовательность чисел,
+//    в которой в каждом терме цифры "читаются вслух". 1 читается как "one 1". 11
+//    читается как "two 1's". 21 читается как "one 2, then one 1".
+//        1211 читается как "one 1, then one 2, then two 1's".
+    public static String conveyLookAndSay(String str) {
+        Map<String, Integer> map = Map.of("one", 1, "two", 2,"three",3,"four",4,
+                "five",5,"six",6,"seven",7,"eight",8,"nine",9);
+        String text = "";
+        str = "then " + str;
+        String[] arr = str.split(",");
+        for(int i=0; i<arr.length;i++) {
+            String[] mas = arr[i].trim().split(" ");
+            int n = 0;
+            if(map.get(mas[1]) != null) {
+                n=map.get(mas[1]);
+            }
+            for(int j=1; j<=n;j++) {
+                text += mas[2].substring(0,1);
+            }
+        }
+
+        return text;
+    }
+
+    public static String maxPalindrom(String s) {
+        String str="";
+        int max=0;
+        for(int i=0; i < s.length()-1; i++) {
+            for(int j=i+1; j <= s.length(); j++) {
+                String next = s.substring(i,j);
+                if(isPalindrom(next)) {
+                    if(next.length()>max) {
+                        max=next.length();
+                        str=next;
+                    }
+                }
+            }
+
+        }
+        return str;
+    }
+    public static boolean isPalindrom(String str) {
+        if(str.length()==0) {
+            return false;
+        }
+        if(str.length()==1) {
+            return true;
+        }
+        for(int i = 0; i< str.length() / 2; i++) {
+            if(str.charAt(i) != str.charAt(str.length() - 1 - i)) {
+                return false;
+            }
+        }
+        return true;
+    }
 }
