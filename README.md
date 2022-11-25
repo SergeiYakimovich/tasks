@@ -1,1 +1,1 @@
-# Решение задач на CoodeBattle, Leetcode и др.
+﻿# Решение алгоритмических задач на CodeBattle, Leetcode, Yandex и др.
