@@ -34,4 +34,19 @@ public class MatrixUtils {
         }
         return result;
     }
+
+    public static void snakeMatrix() {
+        int rows = 4;
+        int columns = 5;
+        int[][] arr = new int[rows][columns];
+
+        for(int n = 0; n < rows*columns; n++) {
+            int i = n / columns;
+            int j = i % 2 == 0 ? n % columns : columns - 1 - n % columns;
+            arr[i][j] = n;
+        }
+        System.out.println(Arrays.deepToString(arr));
+        // => [[0, 1, 2, 3, 4], [9, 8, 7, 6, 5], [10, 11, 12, 13, 14], [19, 18, 17, 16, 15]]
+    }
+
 }

@@ -75,19 +75,35 @@ public class NumberUtils {
         String str = String.join("",mas);
         return Integer.parseInt(str);
     }
-
+    public static int sumOfDigits(int number) {
+        number = Math.abs(number);
+        int sum = 0;
+        while (number > 0) {
+            sum += number % 10;
+            number /= 10;
+        }
+        return sum;
+    }
     public static Integer maxOfNumbers(Integer a, Integer b, Integer c) {
         int[] arr = {a,b,c};
         Arrays.sort(arr);
         Double d = Math.pow(arr[1], 2) + Math.pow(arr[2], 2);
         return d.intValue();
     }
-    public static Integer minOfNumbers(Integer a, Integer b, Integer c) {
+    public static int minOfNumbers(int a, int b, int c) {
         int[] arr = {a,b,c};
         Arrays.sort(arr);
         return arr[0];
     }
-
+    public static boolean isSimple(Integer number) {
+        if(number < 2) return false;
+        for(int i = 2; i < number / 2; i++) {
+            if(number % i == 0) {
+                return false;
+            }
+        }
+        return true;
+    }
     public static Integer siracuzy(Integer num) {
         List<Integer> list = new ArrayList();
         Integer n = num;

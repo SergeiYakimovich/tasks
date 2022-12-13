@@ -184,4 +184,12 @@ public class StringUtils {
         }
         return true;
     }
+
+    public static String reverseByRecurs(String str) {
+        if(str.length() == 0) {
+            return "";
+        } else {
+            return reverseByRecurs(str.substring(1)) + str.charAt(0);
+        }
+    }
 }
