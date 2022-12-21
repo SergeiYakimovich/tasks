@@ -1,22 +1,37 @@
-import java.util.Arrays;
-import java.util.Random;
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
 public class App {
-    public static void main(String[] args) {
-        Integer[] arr = {1, 2};
-        Random random = new Random();
+    public static void main(String[] args) throws IOException {
+        String fileName = "test.csv";
+        List<Person> persons = new ArrayList<>();
+        Person person = new Person("Ivan", 20, Map.of("tel","25-12-86","mail","1@mail.ru"));
+        persons.add(person);
 
-        for(int i = 0; i < arr.length - 1; i++) {
-            int index = random.nextInt(i + 1, arr.length );
-            int temp = arr[i];
-            arr[i] = arr[index];
-            arr[index] = temp;
-        }
+        ObjectMapper mapper = new ObjectMapper();
+        mapper.writeValue(new File(fileName), persons);
 
-        System.out.println(Arrays.toString(arr)); // => [4, 5, 1, 6, 3, 7, 2]
+
     }
 }
+@JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY)
+class Person {
+    String name;
+    int age;
+    Map<String, String> contacts;
 
+    public Person(String name, int age, Map<String, String> contacts) {
+        this.name = name;
+        this.age = age;
+        this.contacts = contacts;
+    }
+}
 
 //            System.out.println(); // => {Petr=1990, Egor=1995, Ivan=2000}
 
