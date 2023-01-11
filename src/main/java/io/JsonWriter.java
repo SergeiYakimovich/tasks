@@ -1,4 +1,4 @@
-package other;
+package io;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.core.type.TypeReference;
@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-public class JsonWriter {
+public class JsonWriter { // парсинг JSON файлов
     public static void main(String[] args) throws IOException {
         String fileName = "test.json";
         List<Person> people = new ArrayList<>();

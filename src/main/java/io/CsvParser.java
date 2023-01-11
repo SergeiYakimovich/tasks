@@ -1,4 +1,4 @@
-package other;
+package io;
 
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.databind.MappingIterator;
@@ -13,7 +13,7 @@ import java.io.Reader;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class CsvParser {
+public class CsvParser { // парсинг CSV файлов
     public static void main(String[] args) throws IOException {
         String fileName = "test1.csv";
         Reader myReader = new FileReader(fileName);

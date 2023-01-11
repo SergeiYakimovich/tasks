@@ -1,10 +1,10 @@
-package other;
+package utils;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.function.UnaryOperator;
 
-public class MethodAsParam {
+public class MethodAsParam { // 3 способа передать метод как параметр
 
     public static void main(String[] args) throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
 
@@ -25,6 +25,7 @@ public class MethodAsParam {
         superMethodInterface((a,b,c) -> a + b - c); // => -5
     }
 
+    // создадим свой интерфейс
     interface MyInterface {
         int count(int a, int b, int c);
     }

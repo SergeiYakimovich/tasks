@@ -6,7 +6,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Scanner;
 
-public class YandexTry {
+public class YandexTry { // тестирование системы ввода-вывода данных
 
     class App1 {
         public static void main(String[] args) throws Exception {
@@ -84,7 +84,7 @@ public class YandexTry {
         }
     }
 
-    class App5 { // Андрей и резервуары
+    class App5 { // задача Андрей и резервуары
 
         public static void main(String[] args) throws Exception {
             Path path = Paths.get("input.txt");

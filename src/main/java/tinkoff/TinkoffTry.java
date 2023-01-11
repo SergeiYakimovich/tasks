@@ -3,7 +3,7 @@ package tinkoff;
 import java.util.Arrays;
 import java.util.Scanner;
 
-public class TinkoffTry {
+public class TinkoffTry { // тестирование системы ввода-вывода данных
 
     class App1 {
         public static void main(String[] args) {

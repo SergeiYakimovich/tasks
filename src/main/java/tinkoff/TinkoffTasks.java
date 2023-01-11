@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 public class TinkoffTasks {
 
-    public class App1 { // таблички с разными цветами
+    public class App1 { // задача таблички с разными цветами
         public static void main(String[] argus) {
 
             Scanner scanner = new Scanner(System.in);
@@ -29,7 +29,7 @@ public class TinkoffTasks {
         }
     }
 
-    public class App2 { // min NOK
+    public class App2 { // задача min NOK
         public static void main(String[] args) {
             Scanner scanner = new Scanner(System.in);
             int number = scanner.nextInt();
@@ -64,7 +64,7 @@ public class TinkoffTasks {
         }
     }
 
-    public class App3 { // максимальный XOR
+    public class App3 { // задача максимальный XOR
         public static void main(String[] args) {
             Scanner scanner = new Scanner(System.in);
             int number = scanner.nextInt();
@@ -94,7 +94,7 @@ public class TinkoffTasks {
 
     }
 
-    public class App4 { // перевод валют
+    public class App4 { // задача перевод валют
         public static void main(String[] args) {
             final int numberValues = 3;
             Scanner scanner = new Scanner(System.in);
@@ -142,7 +142,7 @@ public class TinkoffTasks {
 
     }
 
-    public class App5 { // треугольники в многоугольнике
+    public class App5 { // задача треугольники в многоугольнике
         public static void main(String[] args) {
             Scanner scanner = new Scanner(System.in);
             int number = scanner.nextInt();

@@ -6,6 +6,8 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.regex.MatchResult;
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 public class NumberUtils {
@@ -26,6 +28,18 @@ public class NumberUtils {
         return Math.min(mas[arr.size()-1], mas[arr.size()-2]);
     }
 
+    public static void findNumbersinString(String[] args) {
+        String str = "9 jan 2023, temperature -18";
+
+        List<Integer> numbers = Pattern.compile("-?\\d+")
+                .matcher(str)
+                .results()
+                .map(MatchResult::group)
+                .map(s -> Integer.parseInt(s))
+                .collect(Collectors.toList());
+
+        System.out.print(numbers); // => [9, 2023, -18]
+    }
 
     //    Перевод латинских чисел
     public static Integer romanDigits(String num) {

@@ -15,7 +15,7 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 public class Yandex {
-class App6 { // shifr
+class App6 { // задача shifr
 
     public static void main(String[] args) throws Exception {
         Path path = Paths.get("input.txt");
@@ -54,7 +54,7 @@ class App6 { // shifr
 
 }
 
-class App7 { // ракеты
+class App7 { // задача ракеты
 
     public static void main(String[] args) throws Exception {
         Path path = Paths.get("input.txt");
@@ -98,7 +98,7 @@ class App7 { // ракеты
 
 }
 
-class App8 { // подсчет заказов
+class App8 { // задача подсчет заказов
 
     public static void main(String[] args) throws Exception {
         Path path = Paths.get("input.txt");
@@ -158,7 +158,7 @@ class App8 { // подсчет заказов
 
 }
 
-class App9 { // зелье
+class App9 { // задача зелье
 
     public static void main(String[] args) throws Exception {
         Path path = Paths.get("input.txt");

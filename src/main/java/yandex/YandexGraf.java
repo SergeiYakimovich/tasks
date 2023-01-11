@@ -3,7 +3,7 @@ package yandex;
 import java.util.LinkedList;
 import java.util.Queue;
 
-class YandexGraf {
+class YandexGraf { // задача с графом
 
     public static void main(String[] args) throws Exception {
         int n = 10;

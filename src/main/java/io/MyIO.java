@@ -1,4 +1,4 @@
-package other;
+package io;
 
 import java.io.FileWriter;
 import java.io.IOException;
@@ -8,7 +8,7 @@ import java.nio.file.StandardOpenOption;
 
 import static java.nio.file.Files.writeString;
 
-public class Write {
+public class MyIO {
     public static void main(String[] args) throws IOException {
         String fileName = "test.txt";
         String text = "Hello!\n";
