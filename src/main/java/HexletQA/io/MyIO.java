@@ -1,4 +1,4 @@
-package io;
+package HexletQA.io;
 
 import java.io.FileWriter;
 import java.io.IOException;

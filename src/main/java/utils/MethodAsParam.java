@@ -2,7 +2,10 @@ package utils;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.util.List;
+import java.util.function.Predicate;
 import java.util.function.UnaryOperator;
+import java.util.stream.Collectors;
 
 public class MethodAsParam { // 3 способа передать метод как параметр
 
@@ -23,6 +26,22 @@ public class MethodAsParam { // 3 способа передать метод к�
         superMethodInterface(count); // => 35
         superMethodInterface((a,b,c) -> a * b * c); // => 1000
         superMethodInterface((a,b,c) -> a + b - c); // => -5
+
+
+        List<String> list1 = List.of("1", "22", "333", "4444");
+        List<String> filteredList1 = filterList(list1, x -> x.length() >= 3);
+        System.out.println(filteredList1); // => [333, 4444]
+
+        List<Integer> list2 = List.of(1, 2, 3, 4);
+        List<Integer> filteredList2 = filterList(list2, x -> x >= 3);
+        System.out.println(filteredList2); // => [3, 4]
+    }
+
+
+    public static <T> List<T> filterList(List<T> list, Predicate<T> rool) {
+        return list.stream()
+                .filter(x -> rool.test(x))
+                .collect(Collectors.toList());
     }
 
     // создадим свой интерфейс

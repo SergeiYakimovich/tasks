@@ -1,4 +1,4 @@
-package io;
+package HexletQA.io;
 
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.databind.MappingIterator;

@@ -1,12 +1,10 @@
-import org.apache.commons.lang3.ArrayUtils;
-
-import java.util.concurrent.TimeUnit;
+import java.util.Arrays;
 
 public class App {
-    public static void main(String[] args) throws InterruptedException {
-        Integer n = 0;
-        n.getClass().getCanonicalName();
+    public static void main(String[] args) {
+        
     }
+
 
 }
 

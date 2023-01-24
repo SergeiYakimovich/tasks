@@ -98,11 +98,9 @@ public class NumberUtils {
         }
         return sum;
     }
-    public static Integer maxOfNumbers(Integer a, Integer b, Integer c) {
-        int[] arr = {a,b,c};
-        Arrays.sort(arr);
-        Double d = Math.pow(arr[1], 2) + Math.pow(arr[2], 2);
-        return d.intValue();
+    public static int maxOfNumbers(int... numbers) {
+        Arrays.sort(numbers);
+        return numbers[numbers.length - 1];
     }
     public static int minOfNumbers(int a, int b, int c) {
         int[] arr = {a,b,c};
