@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+/**
+ * решение задач в терминале Тинькофф
+ */
 public class TinkoffTasks {
 
     public class App1 { // задача таблички с разными цветами

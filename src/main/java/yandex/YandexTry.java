@@ -6,7 +6,10 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Scanner;
 
-public class YandexTry { // тестирование системы ввода-вывода данных
+/**
+ * тестирование системы ввода-вывода данных в терминале Яндекса
+ */
+public class YandexTry {
 
     class App1 {
         public static void main(String[] args) throws Exception {

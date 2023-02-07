@@ -2,8 +2,14 @@ package utils;
 
 import java.util.Arrays;
 
+/**
+ * задачки с массивами
+ */
 public class MatrixUtils {
 
+    /**
+     * сортировка матрицы
+     */
     public static void sortMatrix() {
         int rows = 3;
         int columns = 3;
@@ -23,6 +29,10 @@ public class MatrixUtils {
         LEFT,
         RIGHT
     }
+
+    /**
+     * поворот матрицы на 90 градусов в заданном направлении
+     */
     public static int[][] rotateMatrix(int[][] matrix, RotateType type) {
         var rows = matrix[0].length;
         var columns = matrix.length;
@@ -35,6 +45,9 @@ public class MatrixUtils {
         return result;
     }
 
+    /**
+     * обход матрицы змейкой
+     */
     public static void snakeMatrix() {
         int rows = 4;
         int columns = 5;
@@ -47,6 +60,29 @@ public class MatrixUtils {
         }
         System.out.println(Arrays.deepToString(arr));
         // => [[0, 1, 2, 3, 4], [9, 8, 7, 6, 5], [10, 11, 12, 13, 14], [19, 18, 17, 16, 15]]
+    }
+
+    /**
+     * сортировка массива одним циклом
+     */
+    public static void bubbleSort(int[] arr) { // сортировка одним циклом
+        boolean wasSwap = false;
+        for(int i = 0; i < arr.length - 1; i++) {
+            if(arr[i] > arr[i + 1]) { // меняем местами элементы
+                int temp = arr[i];
+                arr[i] = arr[i + 1];
+                arr[i + 1] = temp;
+                wasSwap = true;
+            }
+            if(i == arr.length - 2) { // если дошли до конца массива
+                if(wasSwap) { // и были изменения данных
+                    i = -1; // то меняем счетчик для возврата в начало цикла
+                    wasSwap = false;
+                } else { // если изменений не было
+                    return; // то сортировка закончена
+                }
+            }
+        }
     }
 
 }

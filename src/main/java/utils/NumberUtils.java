@@ -10,14 +10,18 @@ import java.util.regex.MatchResult;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
+/**
+ * задачки с числами
+ */
 public class NumberUtils {
 
-//    N членов случайно раскиданы по лестнице из M ступенек, на одной ступеньке может быть сколько угодно членов.
-//    Нужно спуститься по этой лестнице вниз. Каждый раз наступая на ступеньку с членами, число
-//    позора увеличивается по количеству членов. Спускаться можно на одну или две ступеньки за раз
-//            (вы не можете обнаружить число позора дальше, чем в двух ступеньках от вас!).
-//    Напишите функцию спуска с лестницы минимизирующую коэффициент позора.
-//    Функция принимает массив с количеством членов на каждой ступеньке и возвращает минимизированное число позора.
+/*    N членов случайно раскиданы по лестнице из M ступенек, на одной ступеньке может быть сколько угодно членов.
+    Нужно спуститься по этой лестнице вниз. Каждый раз наступая на ступеньку с членами, число
+    позора увеличивается по количеству членов. Спускаться можно на одну или две ступеньки за раз
+            (вы не можете обнаружить число позора дальше, чем в двух ступеньках от вас!).
+    Напишите функцию спуска с лестницы минимизирующую коэффициент позора.
+   Функция принимает массив с количеством членов на каждой ступеньке и возвращает минимизированное число позора.
+ */
     public static Integer ladder(List<Integer> arr) {
         Integer[] mas = new Integer[arr.size()];
         mas[0] = arr.get(0);
@@ -28,7 +32,10 @@ public class NumberUtils {
         return Math.min(mas[arr.size()-1], mas[arr.size()-2]);
     }
 
-    public static void findNumbersinString(String[] args) {
+    /**
+     * найти числа в строке
+     */
+    public static void findNumbersInString() {
         String str = "9 jan 2023, temperature -18";
 
         List<Integer> numbers = Pattern.compile("-?\\d+")
@@ -41,7 +48,9 @@ public class NumberUtils {
         System.out.print(numbers); // => [9, 2023, -18]
     }
 
-    //    Перевод латинских чисел
+    /**
+     * Перевод латинских чисел
+     */
     public static Integer romanDigits(String num) {
         Map<String, Integer> table = new HashMap<>(Map.of(
                 "I", 1, "V", 5, "X", 10,
@@ -61,6 +70,8 @@ public class NumberUtils {
             i--;
         }
         return result;
+
+//        второй вариант решения
 
 //        Map<String, Integer> table1 = new HashMap<>(Map.of(
 //                "I", 1, "V", 5, "X", 10,
@@ -82,13 +93,19 @@ public class NumberUtils {
 //        return result;
     }
 
-//    Сортировка числа по цифрам
+    /**
+     * Сортировка числа по цифрам
+     */
     public static Integer sortNumberByDigits(Integer num) {
         String[] mas = num.toString().split("");
         Arrays.sort(mas, Collections.reverseOrder());
         String str = String.join("",mas);
         return Integer.parseInt(str);
     }
+
+    /**
+     * Сумма цифр числа
+     */
     public static int sumOfDigits(int number) {
         number = Math.abs(number);
         int sum = 0;
@@ -98,6 +115,10 @@ public class NumberUtils {
         }
         return sum;
     }
+
+    /**
+     * максимум любого к-ва чисел
+     */
     public static int maxOfNumbers(int... numbers) {
         Arrays.sort(numbers);
         return numbers[numbers.length - 1];
@@ -116,6 +137,10 @@ public class NumberUtils {
         }
         return true;
     }
+
+    /**
+     * число в последовательности "сиракузы"
+     */
     public static Integer siracuzy(Integer num) {
         List<Integer> list = new ArrayList();
         Integer n = num;
@@ -130,6 +155,9 @@ public class NumberUtils {
         return Collections.max(list);
     }
 
+    /**
+     * перевод числа с слова
+     */
     public static String numberToWord(Integer num) {
         String[] names = {"zero", "one", "two", "three", "four", "five", "six","seven", "eight", "nine",
                 "ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen",
@@ -145,9 +173,10 @@ public class NumberUtils {
         return text;
     }
 
-//    Два числа являются взаимно простыми, если их наибольший общий делитель равен 1.
-//    Реализуйте функцию Эйлера f(x), которая определяет количество положительных
-//    целых чисел меньше x, взаимно простых с x.
+/*    Два числа являются взаимно простыми, если их наибольший общий делитель равен 1.
+    Реализуйте функцию Эйлера f(x), которая определяет количество положительных
+    целых чисел меньше x, взаимно простых с x.
+ */
     public Integer eiler(Integer num) {
         int count = 0;
         for(int i=1; i<=num; i++) {
@@ -158,6 +187,9 @@ public class NumberUtils {
         return count;
     }
 
+    /**
+     * найти наибольший общий делитель
+     */
     public int nod(int x1, int x2) {
         int min = x1<x2 ? x1 : x2;
         for (int i=min; i>=2; i--) {
@@ -168,9 +200,10 @@ public class NumberUtils {
         return 1;
     }
 
-//    Напишите функцию, которая принимает положительное целое число
-//        между 0 и 2000 включительно, и возвращает строковое представление
-//    этого числа на английском языке.
+/*    Напишите функцию, которая принимает положительное целое число
+        между 0 и 2000 включительно, и возвращает строковое представление
+    этого числа на английском языке.
+*/
     public static String digitToText(Integer num) {
         String[] names09 = {"zero", "one", "two", "three", "four",
                 "five", "six","seven", "eight", "nine"};

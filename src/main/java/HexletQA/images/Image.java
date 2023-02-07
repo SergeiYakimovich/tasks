@@ -11,8 +11,44 @@ import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.regex.Pattern;
+
+/**
+ * работа с изображеними - библиотеки swing, awt, ij
+ */
 
 public class Image {
+
+    /**
+     * задание верификации для поля ввода
+     */
+    public static void verifyInputField() {
+        InputVerifier verifier = new InputVerifier() {
+            public boolean verify(JComponent input) {
+                JTextField textField = (JTextField) input;
+                return Pattern.matches("[a-zA-Z]+", textField.getText());
+            }
+            public boolean shouldYieldFocus(JComponent source, JComponent target) {
+                return verify(source);
+            }
+        };
+
+        JTextField field1 = new JTextField("only a-z and A-Z");
+        JTextField field2 = new JTextField();
+        field1.setInputVerifier(verifier);
+
+        JFrame frame = new JFrame();
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.getContentPane().add(field1, BorderLayout.NORTH);
+        frame.getContentPane().add(field2, BorderLayout.SOUTH);
+        frame.pack();
+        frame.setVisible(true);
+    }
+
+    /**
+     * вывод картинки из файла
+     * @throws IOException
+     */
     public static void getAndShowImage() throws IOException {
         String fileName = "rose.bmp";
         // считаем изображение из файла
@@ -31,6 +67,9 @@ public class Image {
         myImage.show();
     }
 
+    /**
+     * рисование треугольника
+     */
     public static void triangle() {
         class DrawATriangle extends JPanel {
             public void paintComponent(Graphics g) {
@@ -50,11 +89,34 @@ public class Image {
         frame.setVisible(true);
     }
 
+    /**
+     * рисование круга
+     */
+    public static void circle() {
+        class DrawCircle extends JPanel {
+            public void paintComponent(Graphics g) {
+                g.drawOval(50, 50, 100, 100);
+            }
+        }
+        DrawCircle circle = new DrawCircle();
+        JFrame frame = new JFrame();
+        frame.setSize(250, 250);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.getContentPane().add(circle, BorderLayout.CENTER);
+        frame.setVisible(true);
+    }
+
+    /**
+     * получение текста от пользователя
+     */
     public static void dialog() {
         String text = JOptionPane.showInputDialog(null, "Введите сообщение:");
         System.out.println("Получено сообщение : " + text);
     }
 
+    /**
+     * создание и обработка нажатий для кнопок ввода
+     */
     public static void button() {
         JFrame frame = new JFrame();
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

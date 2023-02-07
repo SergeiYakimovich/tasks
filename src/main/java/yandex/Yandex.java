@@ -14,6 +14,9 @@ import java.nio.file.Paths;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+/**
+ * решение задач в терминале Яндекса
+ */
 public class Yandex {
 class App6 { // задача shifr
 

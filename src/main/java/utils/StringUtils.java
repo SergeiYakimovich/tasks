@@ -8,10 +8,15 @@ import java.util.stream.Collectors;
 
 import static utils.NumberUtils.minOfNumbers;
 
+/**
+ * задачки со строками
+ */
 public class StringUtils {
 
-//    Заменить повторяющиеся слова множественным числом (+"s")
-//        List.of("dog", "cat", "pig", "dog", "pig") -> [cat, dogs, pigs]
+    /**
+     * Заменить повторяющиеся слова множественным числом (+"s")
+     * List.of("dog", "cat", "pig", "dog", "pig") -> [cat, dogs, pigs]
+     */
     public static List<String> changeDuplicatedWordsByAddingS(List<String> words) {
         List<String> result = words.stream()
                 .collect(HashMap<String, Integer>::new, (m, c) -> {m.put(c, m.containsKey(c) ? (1 + m.get(c)) : 1);
@@ -23,14 +28,18 @@ public class StringUtils {
         return result;
     }
 
-//    Посчитать слово как сумму ASCII
+    /**
+     * Посчитать слово как сумму ASCII
+     */
     public static int countWordAsASCII(String word) {
         return (int) Arrays.stream(word.split(""))
                 .mapToInt(c -> c.charAt(0))
                 .sum();
     }
 
-//    Проверить код на ISBN
+    /**
+     * Проверить код на ISBN
+     */
     public static Boolean validate_ISBN(String code) {
         Integer[] mas = Arrays.stream(code.split(""))
                 .filter(x -> !x.equals("-"))
@@ -43,7 +52,9 @@ public class StringUtils {
         return count % 11 == 0;
     }
 
-//    Проверить на открытые скобки
+    /**
+     * Проверить на открытые скобки
+     */
     public static Boolean hasOpenBrackets(String brackets) {
         int n1 = 0;
         int n2 = 0;
@@ -78,7 +89,9 @@ public class StringUtils {
         }
     }
 
-//    Вычислить расстояние Левенштейна (за сколько шагов можно перейти от слова1 к слову2)
+    /**
+     * Вычислить расстояние Левенштейна (за сколько шагов можно перейти от слова1 к слову2)
+     */
     public static Integer levenshteinDistance(String s1, String s2) {
         int l1 = s1.length() + 1;
         int l2 = s2.length() + 1;
@@ -102,16 +115,9 @@ public class StringUtils {
         return mas[l2-1][l1-1];
     }
 
-    public static List<String> removeCharFromListOfString(List<String> words, String character) {
-        return words.stream()
-                .map(word -> {
-                    return Arrays.stream(word.split(""))
-                            .filter(c -> !c.equals(character))
-                            .collect(Collectors.joining (""));
-                })
-                .collect(Collectors.toList());
-    }
-
+    /**
+     * проверить все ли слова с заглавной
+     */
     public Boolean IsAllWordsBeginsUpperCase(String title) {
         String[] words = title.split(" ");
         for(String word : words) {
@@ -123,16 +129,20 @@ public class StringUtils {
         return true;
     }
 
+    /**
+     * удалить слова нечетной длины
+     */
     public static String DelEvenWordFromText(String str) {
         return  Arrays.stream(str.split(" "))
                 .filter(s -> s.length() % 2 == 0)
                 .collect(Collectors.joining(" "));
     }
 
-    //    Последовательность Конвэя "Посмотри и Скажи" - это последовательность чисел,
-//    в которой в каждом терме цифры "читаются вслух". 1 читается как "one 1". 11
-//    читается как "two 1's". 21 читается как "one 2, then one 1".
-//        1211 читается как "one 1, then one 2, then two 1's".
+/*    Последовательность Конвэя "Посмотри и Скажи" - это последовательность чисел,
+    в которой в каждом терме цифры "читаются вслух". 1 читается как "one 1". 11
+    читается как "two 1's". 21 читается как "one 2, then one 1".
+        1211 читается как "one 1, then one 2, then two 1's".
+ */
     public static String conveyLookAndSay(String str) {
         Map<String, Integer> map = Map.of("one", 1, "two", 2,"three",3,"four",4,
                 "five",5,"six",6,"seven",7,"eight",8,"nine",9);
@@ -153,6 +163,9 @@ public class StringUtils {
         return text;
     }
 
+    /**
+     * найти мксимальный палиндром
+     */
     public static String maxPalindrom(String s) {
         String str="";
         int max=0;
@@ -170,6 +183,10 @@ public class StringUtils {
         }
         return str;
     }
+
+    /**
+     * проверка на палиндром
+     */
     public static boolean isPalindrom(String str) {
         if(str.length()==0) {
             return false;
@@ -185,6 +202,9 @@ public class StringUtils {
         return true;
     }
 
+    /**
+     * проверка на аннаграмму
+     */
     public static boolean isAnagram(String str1, String str2) {
         if(str1.length() != str2.length()) {
             return false;
@@ -196,6 +216,10 @@ public class StringUtils {
         return Arrays.equals(arr1,arr2) ? true : false;
 
     }
+
+    /**
+     * переворот строки рекурсией
+     */
     public static String reverseByRecurs(String str) {
         if(str.length() == 0) {
             return "";

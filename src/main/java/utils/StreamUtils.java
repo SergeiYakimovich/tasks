@@ -8,9 +8,14 @@ import java.util.Random;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+/**
+ * задачки со стримами
+ */
 public class StreamUtils {
 
-    // убрать повторы из тескта
+    /**
+     * убрать повторы из тескта - 4 решения
+     */
     public static void DeleteRepeatedWords() {
         String text = "Ivan Petr Ivan Egor Egor Fedor";
 
@@ -41,6 +46,9 @@ public class StreamUtils {
         System.out.println(modifiedText1); // => Ivan Petr Egor Fedor
     }
 
+    /**
+     * создание случайного массива и его сортировка
+     */
     public static void makeAndSortRandomArray() {
         int rows = 3;
         int columns = 3;

@@ -9,8 +9,14 @@ import java.util.Map;
 import java.util.TreeMap;
 import java.util.stream.Collectors;
 
+/**
+ * задачки с мапами
+ */
 public class MyMapUtils {
 
+    /**
+     * сортировка мап по значению
+     */
     public static void sortMapByValue() {
         Map<String, Integer> myMap = Map.of("Ivan", 2000, "Petr", 1990, "Egor", 1995);
 
@@ -32,6 +38,9 @@ public class MyMapUtils {
         System.out.println(sortedMap2); // => {Petr=1990, Egor=1995, Ivan=2000}
     }
 
+    /**
+     * переворот мап - смена ключ-значение
+     */
     public static void changeKeyValue() {
         Map<String, Integer> myMap = Map.of("Ivan", 2000, "Petr", 1990, "Egor", 1995);
         Map<Integer, String> newMap =
@@ -48,6 +57,10 @@ public class MyMapUtils {
                         Collectors.mapping(Map.Entry::getKey, Collectors.toList())));
         System.out.println(newMap1); // => {2000=[Egor, Ivan], 1990=[Petr]}
     }
+
+    /**
+     * посчитать слова в списке
+     */
     public static Map<String, Integer> countWordInList(List<String> arr) {
         Map<String, Integer> res = new HashMap<>();
         for(String word : arr) {
@@ -58,20 +71,6 @@ public class MyMapUtils {
             }
         }
         return res;
-    }
-
-    public static List<String> getTextOfUser(List<Map<String, String>> messages, String user) {
-        List<String> result = new ArrayList();
-        messages.stream()
-                .forEach(map -> {
-                    if(map.get("user").equals(user)) {
-                        result.add(map.get("text"));
-                    }
-                });
-        if(result.size() == 0) {
-            result.add("no messages!");
-        }
-        return result;
     }
 
 }

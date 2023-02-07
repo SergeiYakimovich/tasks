@@ -4,10 +4,16 @@ import java.net.Inet4Address;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 
+/**
+ * класс работы с IP
+ */
 public class IpUtils {
 
+    /**
+     * addr is subnet address and addr1 is ip address.
+     * Function will return true, if addr1 is within addr(subnet)
+     */
     public static boolean netMatch(String addr, String addr1){
-        //addr is subnet address and addr1 is ip address. Function will return true, if addr1 is within addr(subnet)
 
         String[] parts = addr.split("/");
         String ip = parts[0];
@@ -48,7 +54,9 @@ public class IpUtils {
         }
     }
 
-//        Проверить адрес на IPv4
+    /**
+     * Проверить адрес на IPv4
+     */
     public Boolean isIPv4(String address) {
         String[] mas = address.split("\\.");
         if(mas.length != 4) {

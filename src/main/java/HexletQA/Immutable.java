@@ -3,28 +3,30 @@ package HexletQA;
 import java.util.ArrayList;
 import java.util.List;
 
-final class ImmutableList {
-    private List<String> list;
-
-    ImmutableList(List<String> listValue) {
-        list = new ArrayList<>();
-        for(String item : listValue) {
-            list.add(item);
-        }
-    }
-
-    public List<String> getList() {
-        List<String> listValue = new ArrayList<>();
-        for(String item : list) {
-            listValue.add(item);
-        }
-        return listValue;
-    }
-}
-
+/**
+ * создание иммутабельного списка
+ */
 public class Immutable {
-
         public static void main(String[] args) {
+            final class ImmutableList {
+                private List<String> list;
+
+                ImmutableList(List<String> listValue) {
+                    list = new ArrayList<>();
+                    for(String item : listValue) {
+                        list.add(item);
+                    }
+                }
+
+                public List<String> getList() {
+                    List<String> listValue = new ArrayList<>();
+                    for(String item : list) {
+                        listValue.add(item);
+                    }
+                    return listValue;
+                }
+            }
+
             List<String> list = new ArrayList<>(List.of("1", "2", "3"));
             ImmutableList immutableList = new ImmutableList(list);
 

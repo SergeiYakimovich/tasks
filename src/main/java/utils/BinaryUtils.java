@@ -1,7 +1,13 @@
 package utils;
 
+/**
+ * задачи на двоичные функции
+ */
 public class BinaryUtils {
 
+    /**
+     * двоичное сложение
+     */
     public static String addBinary(String a, String b) {
         String res = "";
         int i=0;
@@ -18,6 +24,5 @@ public class BinaryUtils {
         }
         return count==0 ? res : "1"+res;
     }
-
 
 }

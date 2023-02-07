@@ -29,6 +29,8 @@ dependencies {
     implementation 'org.apache.commons:commons-lang3:3.12.0'
 
     implementation 'net.imagej:ij:1.51h'
+
+    implementation 'commons-io:commons-io:2.6'
 }
 
 test {

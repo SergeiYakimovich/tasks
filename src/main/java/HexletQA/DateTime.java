@@ -1,8 +1,11 @@
-package utils;
+package HexletQA;
 
 import java.sql.Time;
 import java.util.Date;
 
+/**
+ * класс для работы с датами
+ */
 public class DateTime {
 
     public static void getDateTime() {

@@ -1,4 +1,4 @@
-package utils;
+package HexletQA;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -7,7 +7,11 @@ import java.util.function.Predicate;
 import java.util.function.UnaryOperator;
 import java.util.stream.Collectors;
 
-public class MethodAsParam { // 3 способа передать метод как параметр
+/**
+ * передать метод как параметр - 3 способа
+ */
+
+public class MethodAsParam {
 
     public static void main(String[] args) throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
 

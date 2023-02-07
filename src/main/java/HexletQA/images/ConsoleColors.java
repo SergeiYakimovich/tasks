@@ -1,5 +1,8 @@
 package HexletQA.images;
 
+/**
+ * вывод на экран текста в разных цветах-шрифтах
+ */
 public class ConsoleColors {
     // Reset
     public static final String RESET = "\033[0m";  // Text Reset
