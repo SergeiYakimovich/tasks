@@ -85,4 +85,23 @@ public class MatrixUtils {
         }
     }
 
+    /**
+     * переместить нули в конец массива
+     */
+    public static void zeroToEnd() {
+        int[] nums = {1,0,0,2,0,3,0,-4};
+        int j = 0;
+        for (int i = 0; i < nums.length; i++) {
+            if (nums[i] != 0) {
+                if(i != j) {
+                    int temp = nums[j];
+                    nums[j] = nums[i];
+                    nums[i] = temp;
+                }
+                j++;
+            }
+        }
+        System.out.println(Arrays.toString(nums)); // => [1, 2, 3, -4, 0, 0, 0, 0]
+    }
+
 }

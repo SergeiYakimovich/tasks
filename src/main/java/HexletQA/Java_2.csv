@@ -2780,34 +2780,7 @@ https://ru.hexlet.io/qna/java/questions/kak-napisat-parser-na-java;Java;Как �
 
 После получения необходимых знаний и навыков можно начать разработку парсера. Для этого можно воспользоваться готовыми библиотеками или самостоятельно написать парсер на Java."
 https://ru.hexlet.io/qna/java/questions/kak-otkryt-fordzh-cherez-java;Java;Как открыть фордж через java;Нет, нельзя открыть фордж через Java. Фордж является системой контроля версий и может быть использован только с помощью командной строки. Для использования форджа необходимо установить его на компьютер и запустить из командной строки.
-https://ru.hexlet.io/qna/java/questions/kak-sdelat-immutable-class-java;Java;Как сделать immutable class java;"Ниже приведен пример immutable класса на Java:
 
-
-
-
-public final class ImmutableClass {
-  private final int id;
-  private final String name;
-  private final List<String> list;
- 
-  public ImmutableClass(int id, String name, List<String> list) {
-  this.id = id;
-  this.name = name;
-  this.list = new ArrayList<>(list);
-  }
- 
-  public int getId() {
-  return id;
-  }
- 
-  public String getName() {
-  return name;
-  }
- 
-  public List<String> getList() {
-  return Collections.unmodifiableList(list);
-  }
-}"
 https://ru.hexlet.io/qna/java/questions/kak-ob-edinit-dve-kollektsii-java;Java;Как объединить две коллекции java;"Объединить две коллекции можно с помощью метода addAll() из класса Collection. Например:
 
 
@@ -2926,22 +2899,7 @@ int[] array = new int[10];
 for (int i = 0; i < array.length; i++) {
   array[i] = random.nextInt(101);
 }"
-https://ru.hexlet.io/qna/java/questions/kak-proverit-fayl-na-pustotu-java;Java;Как проверить файл на пустоту java;"Одним из возможных способов проверить файл на пустоту в Java является использование класса File и метода length(). Этот метод возвращает длину файла в байтах. Если файл пустой, то длина будет равна нулю.
 
-
-
-
-Пример кода:
-
-
-
-
-File file = new File(""myfile.txt"");
-if (file.length() == 0) {
-  System.out.println(""File is empty."");
-} else {
-  System.out.println(""File is not empty."");
-}"
 https://ru.hexlet.io/qna/java/questions/kak-opredelit-pochemu-neverna-podpis-xml-java;Java;Как определить почему неверна подпись xml java;Ответ: Для определения причины неверной подписи XML в Java необходимо использовать класс javax.xml.crypto.dsig.XMLSignature и проверить подпись с помощью метода validate(). Если проверка не прошла успешно, то можно проанализировать исключение, которое будет выброшено, чтобы определить причину неверной подписи.
 https://ru.hexlet.io/qna/java/questions/kak-polzovatsya-otladchikom-java;Java;Как пользоваться отладчиком java;"Отладчик Java позволяет отлаживать исходный код Java и исследовать процесс выполнения программы. Для того, чтобы использовать отладчик Java, необходимо следующее:
 
@@ -3038,7 +2996,6 @@ https://ru.hexlet.io/qna/java/questions/kak-opredelit-razmer-massiva-v-java;Java
 int[] array = {1, 2, 3, 4, 5};
 int arraySize = array.length; // Размер массива равен 5"
 https://ru.hexlet.io/qna/java/questions/kak-rabotaet-random-v-java;Java;Как работает рандом в java;Рандом в Java генерирует псевдослучайные числа используя класс Random. Этот класс использует алгоритм генерации случайных чисел для построения псевдослучайной последовательности. Он использует случайное значение в качестве начального значения и применяет к нему какое-то преобразование, чтобы получить следующее значение в последовательности. Это преобразование должно быть достаточно сложным, чтобы последовательность была действительно случайной.
-https://ru.hexlet.io/qna/java/questions/kak-poluchit-rasshirenie-fayla-java;Java;Как получить расширение файла java;Расширение файла Java - .java
 https://ru.hexlet.io/qna/java/questions/kak-svyazat-klassy-v-java;Java;Как связать классы в java;"Связь классов может быть реализована при помощи наследования, композиции, агрегации и ассоциации.
 
 
@@ -3060,23 +3017,7 @@ https://ru.hexlet.io/qna/java/questions/kak-svyazat-klassy-v-java;Java;Как с
 
 
 4) Ассоциация – это связь между двумя классами, при которой один класс использует другой класс."
-https://ru.hexlet.io/qna/java/questions/kak-sozdat-klass-isklyucheniy-java;Java;Как создать класс исключений java;"Создание класса исключений в Java очень просто. Вы должны создать новый класс, который будет наследоваться от класса Exception или любого другого подкласса Exception.
 
-
-
-
-Например:
-
-
-
-
-public class MyException extends Exception {
- 
-  public MyException(String message) {
-  super(message);
-  }
- 
-}"
 https://ru.hexlet.io/qna/java/questions/kak-sozdat-novyy-fayl-java;Java;Как создать новый файл java;"Создание нового файла Java довольно просто. Вы можете сделать это, используя текстовый редактор или средства разработки IDE.
 
 
@@ -3122,49 +3063,13 @@ public class HelloWorld {
 
 
 Вы должны увидеть следующее сообщение: Hello World!"
-https://ru.hexlet.io/qna/java/questions/kak-sozdat-fayl-csv-v-java;Java;Как создать файл csv в java;"Создание файла CSV в Java можно выполнить с помощью класса FileWriter. Ниже приведен пример кода для создания файла CSV.
 
-
-
-
-import java.io.FileWriter; 
-import java.io.IOException;
-
-
-
-
-public class CSVExample {
-  public static void main(String[] args) {
-  String csvFile = ""example.csv"";
-  FileWriter writer;
-  try {
-  writer = new FileWriter(csvFile);
-  writer.append(""Name"");
-  writer.append(',');
-  writer.append(""Age"");
-  writer.append('\n');
-  writer.append(""John"");
-  writer.append(',');
-  writer.append(""20"");
-  writer.append('\n');
-  writer.append(""Jane"");
-  writer.append(',');
-  writer.append(""30"");
-  writer.append('\n');
-  writer.flush();
-  writer.close();
-  } catch (IOException e) {
-  e.printStackTrace();
-  }
-  }
-}"
 https://ru.hexlet.io/qna/java/questions/kak-sozdat-massiv-v-java;Java;Как создать массив в java;"Создать массив в Java можно с помощью ключевого слова new. Например, чтобы создать массив типа int из 10 элементов:
 
 
 
 
 int[] array = new int[10];"
-https://ru.hexlet.io/qna/java/questions/kak-serializovat-staticheskoe-pole-v-java;Java;Как сериализовать статическое поле в java;Статические поля не могут быть сериализованы. Они не сохраняются в поток данных, поскольку они принадлежат классу в целом, а не конкретному экземпляру.
 https://ru.hexlet.io/qna/java/questions/kak-nayti-summu-summ-java;Java;Как найти сумму сумм java;"Сумму сумм Java можно найти, используя цикл for. Например:
 
 
@@ -3205,43 +3110,7 @@ https://ru.hexlet.io/qna/java/questions/kak-chislo-preobrazovat-v-massiv-java;Ja
 int number = 123;
 String numberAsString = Integer.toString(number);
 char[] numberAsArray = numberAsString.toCharArray();"
-https://ru.hexlet.io/qna/java/questions/kak-probrosit-isklyuchenie-java;Java;Как пробросить исключение java;"Чтобы пробросить исключение в Java, необходимо использовать оператор throw. Например:
 
-
-
-
-try {
-  // код, который может вызвать исключение
-} catch (Exception e) {
-  throw e; // пробрасываем исключение
-}"
-https://ru.hexlet.io/qna/java/questions/kak-prochitat-chisla-iz-fayla-java;Java;Как прочитать числа из файла java;"Чтобы прочитать числа из файла на Java, можно использовать класс Scanner. Например, следующий код прочитает числа из файла и выведет их на экран:
-
-
-
-
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.util.Scanner;
-
-
-
-
-public class ReadNumbers {
-  public static void main(String[] args) {
-  try {
-  File file = new File(""numbers.txt"");
-  Scanner scanner = new Scanner(file);
-  while (scanner.hasNextInt()) {
-  int number = scanner.nextInt();
-  System.out.println(number);
-  }
-  scanner.close();
-  } catch (FileNotFoundException e) {
-  System.out.println(""File not found"");
-  }
-  }
-}"
 https://ru.hexlet.io/qna/java/questions/kak-schitat-chislo-v-java;Java;Как считать число в java;"Чтобы считать число в Java, можно использовать класс Scanner. Например, чтобы считать целое число:
 
 
@@ -3249,21 +3118,7 @@ https://ru.hexlet.io/qna/java/questions/kak-schitat-chislo-v-java;Java;Как с
 
 Scanner scanner = new Scanner(System.in);
 int number = scanner.nextInt();"
-https://ru.hexlet.io/qna/java/questions/kak-otsortirovat-arraylist-java;Java;Как отсортировать arraylist java;"ArrayList можно отсортировать с помощью метода Collections.sort(). Например:
 
-
-
-
-List<String> list = new ArrayList<>();
-list.add(""Java"");
-list.add(""C++"");
-list.add(""Python"");
-Collections.sort(list);
-
-
-
-
-// Результат: C++, Java, Python"
 https://ru.hexlet.io/qna/java/questions/kak-ochistit-arraylist-v-java;Java;Как очистить arraylist в java;"ArrayList можно очистить при помощи метода clear():
 
 
@@ -3285,30 +3140,11 @@ https://ru.hexlet.io/qna/java/questions/kak-podklyuchit-arrayutils-java;Java;К�
   <artifactId>commons-lang3</artifactId>
   <version>3.11</version>
 </dependency>"
-https://ru.hexlet.io/qna/java/questions/kak-sravnit-bigdecimal-java;Java;Как сравнить bigdecimal java;BigDecimal можно сравнить с помощью метода compareTo(). Этот метод возвращает значение 0, если два значения BigDecimal равны, значение меньше 0, если первое значение меньше второго и значение больше 0, если первое значение больше второго.
 https://ru.hexlet.io/qna/java/questions/kak-vyvesti-vse-elementy-massiva-java;Java;Как вывести все элементы массива java;"for (int i = 0; i < array.length; i++) {
   System.out.println(array[i]);
 }"
 https://ru.hexlet.io/qna/java/questions/kak-rasshiryaetsya-hashmap-java;Java;Как расширяется hashmap java;HashMap расширяется автоматически, когда он заполняется на 75%. Когда это происходит, размер HashMap увеличивается вдвое и все значения распределяются по новому размеру. Это делается для того, чтобы поддерживать быстрые время доступа и обеспечить оптимальную производительность.
 https://ru.hexlet.io/qna/java/questions/kak-rabotaet-hashset-v-java;Java;Как работает hashset в java;HashSet в Java является реализацией интерфейса Set и использует хеш-таблицу для хранения элементов. Хеш-таблица использует хеш-функцию для вычисления индекса элемента в таблице. Когда элемент добавляется в хеш-таблицу, хеш-функция используется для вычисления индекса для этого элемента. Если индекс уже занят другим элементом, то хеш-таблица ищет следующий свободный индекс для этого элемента. Это обеспечивает быстрый доступ к элементам в хеш-таблице. Когда доступ к элементу необходим, хеш-функция используется для быстрого нахождения индекса элемента.
-https://ru.hexlet.io/qna/java/questions/kak-sravnivat-int-java;Java;Как сравнивать int java;"Int можно сравнивать при помощи операторов сравнения: >, <, >=, <=, ==, !=. Например:
-
-
-
-
-int a = 5;
-int b = 10;
-
-
-
-
-if (a > b) {
-  System.out.println(""a is greater than b"");
-} else if (a < b) {
-  System.out.println(""a is less than b"");
-} else {
-  System.out.println(""a is equal to b"");
-}"
 https://ru.hexlet.io/qna/java/questions/kak-preobrazovat-char-v-int-java;Java;Как преобразовать char в int java;"int i = (int) c;"
 https://ru.hexlet.io/qna/java/questions/kak-vyvesti-summu-chisel-v-java;Java;Как вывести сумму чисел в java;"int sum = 0;
 
@@ -3353,26 +3189,7 @@ https://ru.hexlet.io/qna/java/questions/kak-rabotaet-math-random-v-java;Java;К�
 
 
 int randomNumber = (int)(Math.random() * n);"
-https://ru.hexlet.io/qna/java/questions/kak-rabotat-s-klassom-period-v-java;Java;Как работать с классом period в java;"Period класс используется для представления периода времени между двумя датами. Он предоставляет функциональность для работы с такими периодами времени.
 
-
-
-
-Чтобы создать объект period, можно использовать один из статических методов этого класса:
-
-
-
-
-• between(LocalDate startDate, LocalDate endDate) – Создает период между двумя датами.
-• ofDays(long days) – Создает период из указанного количества дней.
-• ofWeeks(long weeks) – Создает период из указанного количества недель.
-• ofMonths(long months) – Создает период из указанного количества месяцев.
-• ofYears(long years) – Создает период из указанного количества лет.
-
-
-
-
-После создания объекта period можно использовать его методы для получения дополнительной информации о периоде. Например, можно использовать метод getYears() для получения количества лет в периоде, или метод toString() для получения строкового представления периода."
 https://ru.hexlet.io/qna/java/questions/kak-sozdat-konstruktor-klassa-v-java;Java;Как создать конструктор класса в java;"public class ИмяКласса {
  
   // поля класса
@@ -3400,34 +3217,7 @@ https://ru.hexlet.io/qna/java/questions/kak-vyglyadit-programmnyy-kod-java;Java;
   System.out.println(""Hello World!"");
   }
 }"
-https://ru.hexlet.io/qna/java/questions/peredat-metod-kak-parametr-java;Java;Передать метод как параметр java;"public class Main {
-  public static void main(String[] args) {
-  TestClass testClass = new TestClass();
-  testClass.runMethod(""sayHello"", ""John"");
-  }
-}
 
-
-
-
-class TestClass {
-  public void runMethod(String methodName, String param) {
-  switch (methodName) {
-  case ""sayHello"":
-  sayHello(param);
-  break;
-  default:
-  System.out.println(""Unknown method"");
-  }
-  }
-
-
-
-
-  private void sayHello(String name) {
-  System.out.println(""Hello, "" + name + ""!"");
-  }
-}"
 https://ru.hexlet.io/qna/java/questions/kak-v-java-zadat-enum;Java;Как в java задать enum;"public enum ПримерEnum {
   Значение1,
   Значение2,
@@ -3435,17 +3225,6 @@ https://ru.hexlet.io/qna/java/questions/kak-v-java-zadat-enum;Java;Как в jav
 }"
 https://ru.hexlet.io/qna/java/questions/kak-pravilno-oformit-main-metod-java;Java;Как правильно оформить main метод java;"public static void main(String[] args) {
   // Тело метода
-}"
-https://ru.hexlet.io/qna/java/questions/kak-peremestit-nuli-v-konets-massiva-java;Java;Как переместить нули в конец массива java;"public static void moveZeroes(int[] nums) {
-  int j = 0;
-  for (int i = 0; i < nums.length; i++) {
-  if (nums[i] != 0) {
-  int temp = nums[j];
-  nums[j] = nums[i];
-  nums[i] = temp;
-  j++;
-  }
-  }
 }"
 https://ru.hexlet.io/qna/java/questions/kak-vyvesti-posledniy-element-massiva-java;Java;Как вывести последний элемент массива java;"Script
 
@@ -3460,49 +3239,6 @@ https://ru.hexlet.io/qna/java/questions/kak-vyvesti-posledniy-element-massiva-ja
 let myArray = [1, 2, 3, 4];
 let lastElement = myArray.pop();
 console.log(lastElement); // 4"
-https://ru.hexlet.io/qna/java/questions/kak-randomno-zapolnit-massiv-java;Java;Как рандомно заполнить массив java;"Script
-
-
-
-
-Для генерации рандомных значений можно использовать следующие функции: 
-
-
-
-
-Math.random() - генерирует случайное число в диапазоне от 0 до 1.
-
-
-
-
-Math.floor() - округляет число до ближайшего меньшего целого.
-
-
-
-
-Math.ceil() - округляет число до ближайшего большего целого.
-
-
-
-
-Пример кода для заполнения массива случайными числами от 0 до 10:
-
-
-
-
-const arr = [];
-
-
-
-
-for (let i = 0; i < 10; i++) {
-  arr.push(Math.floor(Math.random() * 11));
-}
-
-
-
-
-console.log(arr);"
 https://ru.hexlet.io/qna/java/questions/kak-udalit-element-java;Java;Как удалить элемент java;"Script
 
 
@@ -3575,135 +3311,9 @@ function sayHello(name) {
 
 
 sayHello('John'); // выведет 'Hello, John!'"
-https://ru.hexlet.io/qna/java/questions/kak-sozdat-vsplyvayuschee-okno-na-java;Java;Как создать всплывающее окно на java;"Script?
-
-
-
-
-Всплывающее окно можно создать с помощью функции window.alert(). Например:
-
-
-
-
-window.alert(""Это всплывающее окно!"");"
-https://ru.hexlet.io/qna/java/questions/kak-dobavit-element-v-massiv-java;Java;Как добавить элемент в массив java;"Script?
-
-
-
-
-Для добавления элементов в массив JavaScript можно использовать методы push(), unshift(), а также специальные операторы присваивания.
-
-
-
-
-Метод push() добавляет элемент в конец массива:
-
-
-
-
-arr.push(element);
-
-
-
-
-Метод unshift() добавляет элемент в начало массива:
-
-
-
-
-arr.unshift(element);
-
-
-
-
-Специальные операторы присваивания позволяют добавить элемент в любое место массива:
-
-
-
-
-arr[index] = element;"
-https://ru.hexlet.io/qna/java/questions/kak-sdelat-taymer-v-java;Java;Как сделать таймер в java;"Script?
-
-
-
-
-Для создания таймера в JavaScript используется функция setTimeout(). Она принимает два параметра: функцию, которая будет выполнена по истечении заданного времени, и время в миллисекундах.
-
-
-
-
-Например, чтобы выполнить функцию myFunction() через 5 секунд, вы можете использовать следующий код:
-
-
-
-
-setTimeout(myFunction, 5000);"
-https://ru.hexlet.io/qna/java/questions/kak-sravnit-dva-chisla-v-java;Java;Как сравнить два числа в java;"Script?
-
-
-
-
-Для сравнения двух чисел в JavaScript можно использовать операторы сравнения: > (больше), < (меньше), == (равно), >= (больше или равно) и <= (меньше или равно).
-
-
-
-
-Пример:
-
-
-
-
-let num1 = 10;
-let num2 = 20;
-
-
-
-
-if (num1 > num2) {
-  console.log(""Число 1 больше числа 2"");
-} else if (num1 < num2) {
-  console.log(""Число 1 меньше числа 2"");
-} else {
-  console.log(""Числа равны"");
-}"
-https://ru.hexlet.io/qna/java/questions/kak-sravnit-set-java;Java;Как сравнить set java;"Set в Java - это интерфейс, предоставляющий реализацию множества, которое содержит только уникальные элементы. Он предоставляет методы для добавления, удаления и поиска элементов в множестве. Он также предоставляет методы для проверки, пусто ли множество, и для получения его размера.
-
-
-
-
-Можно сравнить Set с другими коллекциями, такими как List, Map и Queue. List является коллекцией, которая поддерживает дублирование элементов. В отличие от этого Set не может содержать дубликаты. Map является коллекцией, которая представляет пары ключ-значение. В отличие от этого Set содержит только один элемент. Queue является коллекцией, которая поддерживает порядок приоритета для элементов. В отличие от этого Set не поддерживает порядок приоритета."
-https://ru.hexlet.io/qna/java/questions/kak-otsortirovat-set-java;Java;Как отсортировать set java;"Set в Java можно отсортировать используя TreeSet. TreeSet является реализацией интерфейса SortedSet и отсортирует элементы в натуральном порядке. Для сортировки в обратном порядке можно использовать метод reversed() класса Collections.
-
-
-
-
-Пример:
-
-
-
-
-Set<String> set = new HashSet<>();
-set.add(""a"");
-set.add(""b"");
-set.add(""c"");
-
-
-
-
-// Сортировка в натуральном порядке
-Set<String> sortedSet = new TreeSet<>(set);
-
-
-
-
-// Сортировка в обратном порядке
-Set<String> reversedSet = new TreeSet<>(Collections.reverseOrder());
-reversedSet.addAll(set);"
 https://ru.hexlet.io/qna/java/questions/kak-ob-yavit-stroku-v-java;Java;Как объявить строку в java;"String str = ""Это строка"";"
 https://ru.hexlet.io/qna/java/questions/kak-iz-char-sdelat-string-java;Java;Как из char сделать string java;"String str = Character.toString(char);"
 https://ru.hexlet.io/qna/java/questions/kak-razbit-stroku-na-slova-java;Java;Как разбить строку на слова java;"String[] words = str.split(""\\s+"");"
 https://ru.hexlet.io/qna/java/questions/kak-rabotaet-switch-v-java;Java;Как работает switch в java;Switch в Java - это оператор ветвления, который позволяет вам выбрать из нескольких вариантов выполнения кода. Он используется для выбора одного из нескольких заданных вариантов. Вы можете использовать switch в Java для выполнения кода, который зависит от значения переменной. Это проще, чем использование множества операторов if-else, которые могут быть запутанными и долгими для чтения.
 https://ru.hexlet.io/qna/java/questions/kak-vyvesti-peremennuyu-v-java;Java;Как вывести переменную в java;"System.out.println(переменная);"
-https://ru.hexlet.io/qna/java/questions/kak-vyvesti-arraylist-odnoy-strokoy-java;Java;Как вывести arraylist одной строкой java;"System.out.println(String.join("", "", list));"
-https://ru.hexlet.io/qna/java/questions/this-kak-parametr-java;Java;This как параметр java;This can refer to a number of different things in Java. It can refer to a keyword used to refer to the current object in a class, a data type used to store a character or a string, or a type of argument used in a method.
 https://ru.hexlet.io/qna/java/questions/kak-sozdat-timestamp-s-tekuschey-datoy-java;Java;Как создать timestamp с текущей датой java;"Timestamp timestamp = new Timestamp(System.currentTimeMillis());"
