@@ -142,7 +142,7 @@ public class NumberUtils {
      * число в последовательности "сиракузы"
      */
     public static Integer siracuzy(Integer num) {
-        List<Integer> list = new ArrayList();
+        List<Integer> list = new ArrayList<>();
         Integer n = num;
         while(n != 1) {
             list.add(n);
