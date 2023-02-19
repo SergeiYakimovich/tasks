@@ -2407,21 +2407,7 @@ https://ru.hexlet.io/qna/java/questions/kak-udalit-peremennuyu-v-java;Java;Ка�
 int myVariable = 0; 
 // Удаление переменной 
 myVariable = null;"
-https://ru.hexlet.io/qna/java/questions/kak-udalit-pustuyu-stroku-java;Java;Как удалить пустую строку java;"Для удаления пустой строки в Java можно использовать метод String.replaceAll() с регулярным выражением, которое определяет пустую строку. Пример использования:
 
-
-
-
-String str = ""This is a string\n\nwith empty lines"";
-str = str.replaceAll(""(?m)^\\s*$[\r\n]+"", """");
-System.out.println(str);
-
-
-
-
-// Вывод:
-// This is a string
-// with empty lines"
 https://ru.hexlet.io/qna/java/questions/kak-udalit-simvol-java;Java;Как удалить символ java;"Для удаления символа в Java необходимо использовать метод String.replace(). Этот метод позволяет заменить один символ или последовательность символов другим значением. Для удаления символа нужно передать в метод пустую строку в качестве второго параметра.
 
 
@@ -2489,25 +2475,7 @@ https://ru.hexlet.io/qna/java/questions/kak-ustanovit-biblioteku-v-java;Java;К�
 
 
 4. Проверьте, что библиотека успешно установлена, используя команду javac или запустив пример кода."
-https://ru.hexlet.io/qna/java/questions/kak-poluchit-dannye-iz-fayla-property-java;Java;Как получить данные из файла property java;"Для чтения данных из файла свойств Java вы можете использовать класс Properties из пакета java.util. Пример кода для чтения файла свойств выглядит следующим образом:
 
-
-
-
-// Создаем объект Properties
-Properties prop = new Properties();
-
-
-
-
-// Загружаем файл свойств
-prop.load(new FileInputStream(""config.properties""));
-
-
-
-
-// Получаем значение из файла свойств
-String value = prop.getProperty(""key"");"
 https://ru.hexlet.io/qna/java/questions/kak-schitat-simvol-v-java;Java;Как считать символ в java;"Для чтения символа в Java используется метод read() класса Reader. Например, чтобы считать символ из файла, можно использовать следующий код:
 
 
@@ -2943,45 +2911,9 @@ https://ru.hexlet.io/qna/java/questions/kak-polzovatsya-otladchikom-java;Java;К
 
 8. Когда вы закончите отладку, выйдите из отладчика и запустите программу без отладчика."
 https://ru.hexlet.io/qna/java/questions/kak-otpravit-get-zapros-java;Java;Как отправить get запрос java;"Отправка GET запроса в Java может быть сделана с помощью класса URL:
-
-
-
-
-try {
-  URL url = new URL(""https://example.com/"");
-  HttpURLConnection con = (HttpURLConnection) url.openConnection();
-  con.setRequestMethod(""GET"");
-
-
-
-
-  int responseCode = con.getResponseCode();
-  System.out.println(""Response Code : "" + responseCode);
-
-
-
-
-  BufferedReader in = new BufferedReader(
-  new InputStreamReader(con.getInputStream()));
-  String inputLine;
-  StringBuffer response = new StringBuffer();
-
-
-
-
-  while ((inputLine = in.readLine()) != null) {
-  response.append(inputLine);
-  }
-  in.close();
-
-
-
-
-  //print result
-  System.out.println(response.toString());
-} catch (Exception e) {
-  e.printStackTrace();
-}"
+!
+!
+!
 https://ru.hexlet.io/qna/java/questions/kak-podklyuchit-mysql-k-java;Java;Как подключить mysql к java;Подключение к MySQL из Java приложения можно осуществить с помощью драйвера JDBC. Для этого необходимо скачать драйвер и добавить его в ваш проект. Далее нужно импортировать пакеты java.sql и javax.sql. Для подключения к базе данных используйте класс DriverManager и метод getConnection(). Для отправки запросов используйте класс Statement.
 https://ru.hexlet.io/qna/java/questions/kak-opredelit-razmer-massiva-v-java;Java;Как определить размер массива в java;"Размер массива можно определить с помощью метода length, который возвращает целочисленное значение, равное количеству элементов в массиве.
 

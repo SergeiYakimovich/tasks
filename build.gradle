@@ -31,6 +31,8 @@ dependencies {
     implementation 'net.imagej:ij:1.51h'
 
     implementation 'commons-io:commons-io:2.6'
+
+    implementation 'org.postgresql:postgresql:42.5.4'
 }
 
 test {

@@ -1,9 +1,11 @@
+package HexletQA;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
-public class App {
+public class DataBase {
     public static void main(String[] args) {
         Connection connection = null;
         Statement statement = null;
@@ -23,8 +25,9 @@ public class App {
 
                 System.out.print( "NAME = " + name );
                 System.out.print( "   COLOR = " + color );
-                System.out.print( "   AGE = " + age );
-                System.out.println();
+                System.out.println( "   AGE = " + age );
+                // => NAME = VW   COLOR = white   AGE = 3
+                // => NAME = TOYOTA   COLOR = black   AGE = 4
             }
 
             result.close();
@@ -35,13 +38,4 @@ public class App {
             System.err.println(e.getClass().getName()+": "+e.getMessage());
         }
     }
-    
 }
-
-
-
-
-//            System.out.println(); // => {Petr=1990, Egor=1995, Ivan=2000}
-
-//        System.setOut(new java.io.PrintStream(System.out, true, "UTF-8"));
-//        System.out.println(); throws Exception
