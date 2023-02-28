@@ -1,41 +1,36 @@
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.Statement;
+import kong.unirest.HttpResponse;
+import kong.unirest.Unirest;
+
+import javax.swing.*;
+import java.awt.*;
+import java.io.IOException;
+import java.nio.file.Paths;
+import java.nio.file.StandardOpenOption;
+import java.util.List;
+
+import static java.nio.file.Files.writeString;
 
 public class App {
-    public static void main(String[] args) {
-        Connection connection = null;
-        Statement statement = null;
-        try {
-            Class.forName("org.postgresql.Driver");
-            connection = DriverManager
-                    .getConnection("jdbc:postgresql://localhost:5432/mydb",
-                            "postgres", "");
 
-            statement = connection.createStatement();
-            ResultSet result = statement.executeQuery( "SELECT * FROM CARS;" );
+    public static void main(String[] args) throws IOException {
+        HttpResponse<String> response = Unirest
+                .get("https://emex.ru/products/69200H0000/31327")
+                .asString();
 
-            while (result.next()) {
-                String  name = result.getString("name");
-                String  color = result.getString("color");
-                int age  = result.getInt("age");
+        System.out.println("STATUS = " + response.getStatus());
+        // => STATUS = 200
 
-                System.out.print( "NAME = " + name );
-                System.out.print( "   COLOR = " + color );
-                System.out.print( "   AGE = " + age );
-                System.out.println();
-            }
+        System.out.println("HEADER = " + response.getHeaders());
+        // => HEADER = Accept-Ranges: bytes   и т.д.
 
-            result.close();
-            statement.close();
-            connection.close();
-        } catch (Exception e) {
-            e.printStackTrace();
-            System.err.println(e.getClass().getName()+": "+e.getMessage());
-        }
+        System.out.println("BODY = " + response.getBody());
+        // => BODY = <!doctype html>   и т.д.
+
+        writeString(Paths.get("emex.txt"), response.getBody());
+
+        List<String> list;
+
     }
-    
 }
 
 

@@ -1,9 +1,19 @@
 package HexletQA;
 
+import java.time.temporal.ValueRange;
+
 /**
  * задание диапазонов для ранжирования
  */
 public class RangeNumbers {
+    public static void makeRange() {
+        ValueRange rang = ValueRange.of(0, 10);
+
+        System.out.println(rang.isValidValue(2)); // => true
+        System.out.println(rang.isValidValue(20)); // => false
+        System.out.println(rang);  // => 0 - 10
+    }
+
     public enum Range {
         RANGE1(Double.MIN_VALUE,1),
         RANGE2(1, 2),

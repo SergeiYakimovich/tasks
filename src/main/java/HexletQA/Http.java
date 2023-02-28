@@ -1,12 +1,30 @@
 package HexletQA;
 
+import kong.unirest.HttpResponse;
+import kong.unirest.Unirest;
+
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 
+
 public class Http {
+    public static void makeGetHttp() {
+        HttpResponse<String> response = Unirest
+                .get("https://example.com/")
+                .asString();
+
+        System.out.println("STATUS = " + response.getStatus());
+        // => STATUS = 200
+
+        System.out.println("HEADER = " + response.getHeaders());
+        // => HEADER = Accept-Ranges: bytes   и т.д.
+
+        System.out.println("BODY = " + response.getBody());
+        // => BODY = <!doctype html>   и т.д.
+    }
 
     public static void main(String[] args) {
         StringBuffer response = new StringBuffer();

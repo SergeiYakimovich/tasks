@@ -12,12 +12,70 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.util.regex.Pattern;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+import java.time.LocalDateTime;
+import java.time.Period;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * работа с изображеними - библиотеки swing, awt, ij
  */
 
 public class Image {
+
+    public static void drawWeatherGrafic() {
+        // создадим список с данными погоды
+        class Weather {
+            LocalDateTime time;
+            int temperature;
+
+            public Weather(LocalDateTime time, int temperature) {
+                this.time = time;
+                this.temperature = temperature;
+            }
+        }
+        LocalDateTime time = LocalDateTime.now();
+        List<Weather> list = new ArrayList<>(List.of(new Weather(time, 0),
+                new Weather(time.minusDays(1), 5), new Weather(time.minusDays(2), 0),
+                new Weather(time.plusDays(1), 10), new Weather(time.plusDays(2), 5)));
+
+        int cX = 20; // смещение для рисования осей
+        int cY = 350;
+        int points = list.size(); // количество точек на графике
+
+        // создадим массив координат х
+        list.sort((t1,t2) -> t1.time.compareTo(t2.time));
+        LocalDateTime minTime = list.get(0).time;
+        int[] xData = new int[points];
+        for(int i = 0; i < points; i++) {
+            xData[i] = Period.between(minTime.toLocalDate(), list.get(i).time.toLocalDate()).getDays() * 50 + cX;
+        }
+        // создадим массив координат y
+        int[] yData = list.stream()
+                .mapToInt(y -> cY - y.temperature * 10)
+                .toArray();
+
+        class PaintWeather extends JPanel {
+            @Override
+            protected void paintComponent(Graphics graphics) {
+                Graphics2D graphics2D = (Graphics2D)graphics;
+                graphics2D.drawLine(cX, cY, cX, cX); // рисуем оси
+                graphics2D.drawLine(cX, cY, cY + 100, cY);
+                graphics2D.drawPolyline(xData, yData, points); // рисуем график
+            }
+        }
+
+        JPanel panel = new JPanel(new BorderLayout());
+        panel.add(new PaintWeather(), BorderLayout.CENTER);
+
+        JFrame frame = new JFrame("График температур");
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setContentPane(panel);
+        frame.setSize(500, 400);
+        frame.setVisible(true);
+    }
 
     /**
      * задание верификации для поля ввода
@@ -143,6 +201,70 @@ public class Image {
 
         // Устанавливаем размер и отображаем окно
         frame.setSize(300, 300);
+        frame.setVisible(true);
+    }
+
+    public static void pressedKey() {
+        KeyListener listener = new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent keyEvent) {
+                char key = keyEvent.getKeyChar();
+                System.out.println("Нажата и отпущена клавиша - " + key);
+            }
+
+            @Override
+            public void keyPressed(KeyEvent keyEvent) {
+                char key = keyEvent.getKeyChar();
+                System.out.println("Нажата клавиша - " + key);
+            }
+
+            @Override
+            public void keyReleased(KeyEvent keyEvent) {
+                char key = keyEvent.getKeyChar();
+                System.out.println("Отпущена клавиша - " + key);
+            }
+        };
+
+        JTextField textField = new JTextField(20);
+        textField.addKeyListener(listener);
+
+        JFrame frame = new JFrame();
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.getContentPane().add(textField, BorderLayout.CENTER);
+        frame.pack();
+        frame.setVisible(true);
+    }
+
+    public static void drawTable() {
+        String[] columnNames = {
+                "Name",
+                "Last modified",
+                "Type",
+                "Size"};
+        String[][] data = {
+                {"addins", "02.11.2006 19:15", "Folder", ""},
+                {"AppPatch", "03.10.2006 14:10", "Folder", ""},
+                {"assembly", "02.11.2006 14:20", "Folder", ""},
+                {"Boot", "13.10.2007 10:46", "Folder", ""},
+                {"Branding", "13.10.2007 12:10", "Folder", ""},
+                {"Cursors", "23.09.2006 16:34", "Folder", ""},
+                {"Debug", "07.12.2006 17:45", "Folder", ""},
+                {"Fonts", "03.10.2006 14:08", "Folder", ""},
+                {"Help", "08.11.2006 18:23", "Folder", ""},
+                {"explorer.exe", "18.10.2006 14:13", "File", "2,93MB"},
+                {"helppane.exe", "22.08.2006 11:39", "File", "4,58MB"},
+                {"twunk.exe", "19.08.2007 10:37", "File", "1,08MB"},
+                {"nsreg.exe", "07.08.2007 11:14", "File", "2,10MB"},
+                {"avisp.exe", "17.12.2007 16:58", "File", "12,67MB"},};
+
+        JFrame frame = new JFrame("Test frame");
+        JTable table = new JTable(data, columnNames);
+        JScrollPane scrollPane = new JScrollPane(table);
+        frame.getContentPane().add(scrollPane);
+        frame.setPreferredSize(new Dimension(450, 200));
+        frame.pack();
+        frame.setLocationRelativeTo(null);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setVisible(true);
     }
 
