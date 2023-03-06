@@ -24,6 +24,22 @@ public class Http {
 
         System.out.println("BODY = " + response.getBody());
         // => BODY = <!doctype html>   и т.д.
+
+        //        HttpResponse<String> response = Unirest
+//                .get("https://emex.ru/products/69200H0000/Hyundai%20%2F%20KIA/29372")
+//                .asString();
+//
+//        System.out.println("STATUS = " + response.getStatus());
+//        // => STATUS = 200
+//
+//        System.out.println("HEADER = " + response.getHeaders());
+//        // => HEADER = Accept-Ranges: bytes   и т.д.
+//
+//        System.out.println("BODY = " + response.getBody());
+//        // => BODY = <!doctype html>   и т.д.
+//
+//        writeString(Paths.get("emex.txt"), response.getBody());
+
     }
 
     public static void main(String[] args) {

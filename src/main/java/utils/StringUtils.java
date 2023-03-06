@@ -220,7 +220,7 @@ public class StringUtils {
     /**
      * переворот строки рекурсией
      */
-    public static String reverseByRecurs(String str) {
+    public String reverseByRecurs(String str) {
         if(str.length() == 0) {
             return "";
         } else {

@@ -106,7 +106,7 @@ public class NumberUtils {
     /**
      * Сумма цифр числа
      */
-    public static int sumOfDigits(int number) {
+    public int sumOfDigits(int number) {
         number = Math.abs(number);
         int sum = 0;
         while (number > 0) {
@@ -240,5 +240,7 @@ public class NumberUtils {
         return text.substring(0,1).toUpperCase() + text.substring(1);
 
     }
-
+    public static Integer count() {
+        return 123;
+    }
 }

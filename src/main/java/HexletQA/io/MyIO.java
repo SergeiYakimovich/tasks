@@ -23,6 +23,9 @@ public class MyIO {
 
         value = prop.getProperty("spring.profiles.active");
         System.out.println(value); // => prod
+
+        prop = System.getProperties();
+        System.out.println(prop);
     }
 
     public static void main(String[] args) throws IOException {

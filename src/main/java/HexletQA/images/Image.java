@@ -170,6 +170,9 @@ public class Image {
     public static void dialog() {
         String text = JOptionPane.showInputDialog(null, "Введите сообщение:");
         System.out.println("Получено сообщение : " + text);
+
+        int n = JOptionPane.showConfirmDialog(null, "Подтверждаете ?");
+        System.out.println(n);
     }
 
     /**

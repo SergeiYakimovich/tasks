@@ -14,5 +14,9 @@ public class RegExpressions {
         System.out.println(str);
         // => This is a string
         // => with empty lines
+
+        String TEMPLATE = "Hello, %s!";
+        String res = String.format(TEMPLATE, "Ivan");
+        System.out.println(res);
     }
 }
