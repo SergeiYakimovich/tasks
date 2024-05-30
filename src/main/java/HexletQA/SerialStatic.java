@@ -7,34 +7,6 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 
-class MyClass implements Serializable {
-    private int nonStaticField;
-    private static int staticField = 0;
-
-    public MyClass(int nonStaticFieldValue, int staticFieldValue) {
-        this.nonStaticField = nonStaticFieldValue;
-        staticField = staticFieldValue;
-    }
-
-    private void writeObject(ObjectOutputStream out) throws IOException {
-        out.defaultWriteObject();
-        out.writeObject(staticField);
-    }
-
-    private void readObject(ObjectInputStream in) throws ClassNotFoundException, IOException {
-        in.defaultReadObject();
-        staticField = (int) in.readObject();
-    }
-
-    @Override
-    public String toString() {
-        return "MyClass {" +
-                " nonStaticField=" + nonStaticField +
-                " staticField=" + staticField +
-                " }";
-    }
-}
-
 public class SerialStatic {
     public static void main(String[] args) throws IOException, ClassNotFoundException {
         MyClass myObject = new MyClass(10, 20);
@@ -49,5 +21,33 @@ public class SerialStatic {
         objectInputStream.close();
 
         System.out.println(myNewObject); // => MyClass { nonStaticField=10 staticField=20 }
+    }
+
+    static class MyClass implements Serializable {
+        private int nonStaticField;
+        private static int staticField = 0;
+
+        public MyClass(int nonStaticFieldValue, int staticFieldValue) {
+            this.nonStaticField = nonStaticFieldValue;
+            staticField = staticFieldValue;
+        }
+
+        private void writeObject(ObjectOutputStream out) throws IOException {
+            out.defaultWriteObject();
+            out.writeObject(staticField);
+        }
+
+        private void readObject(ObjectInputStream in) throws ClassNotFoundException, IOException {
+            in.defaultReadObject();
+            staticField = (int) in.readObject();
+        }
+
+        @Override
+        public String toString() {
+            return "MyClass {" +
+                    " nonStaticField=" + nonStaticField +
+                    " staticField=" + staticField +
+                    " }";
+        }
     }
 }
