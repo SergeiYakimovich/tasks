@@ -240,7 +240,4 @@ public class NumberUtils {
         return text.substring(0,1).toUpperCase() + text.substring(1);
 
     }
-    public static Integer count() {
-        return 123;
-    }
 }

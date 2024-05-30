@@ -5,11 +5,9 @@ import com.fasterxml.jackson.databind.MappingIterator;
 import com.fasterxml.jackson.databind.ObjectWriter;
 import com.fasterxml.jackson.dataformat.csv.CsvMapper;
 import com.fasterxml.jackson.dataformat.csv.CsvSchema;
+import com.opencsv.bean.CsvToBeanBuilder;
 
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.Reader;
+import java.io.*;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -73,9 +71,29 @@ public class CsvParser { // парсинг CSV файлов
 
         @Override
         public String toString() {
-            return "Element{" + "number=" + number + ", name="
+            return "HexletQA.io.Element{" + "number=" + number + ", name="
                     + name + ", count=" + count + ", sum=" + sum + '}';
         }
+    }
+
+    public static void main() {
+
+        String text = "number;name;count;sum\n" +
+                "\"6RF 833 055 C\";\"ДВЕРЬ З Л\";1.0;41500.0\n" +
+                "\"6RF 833 056 C\";\"ДВЕРЬ З ПР\";1.0;42500.0\n" +
+                "\"6RU 845 025\";\"СТЕКЛО З Л\";1.0;2440.0\n" +
+                "\"6RU 845 026\";\"СТЕКЛО З ПР\";1.0;2540.0";
+
+        StringReader reader = new StringReader(text);
+        List<HexletQA.io.Element> elements = new CsvToBeanBuilder(reader)
+                .withType(HexletQA.io.Element.class)
+                .withIgnoreEmptyLine(true)
+                .withSkipLines(1)
+                .withSeparator(';')
+                .build()
+                .parse();
+
+        elements.forEach(System.out::println);
     }
 }
 

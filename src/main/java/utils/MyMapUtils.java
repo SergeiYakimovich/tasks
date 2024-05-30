@@ -9,6 +9,8 @@ import java.util.Map;
 import java.util.TreeMap;
 import java.util.stream.Collectors;
 
+import static java.util.stream.Collectors.toMap;
+
 /**
  * задачки с мапами
  */
@@ -71,6 +73,24 @@ public class MyMapUtils {
             }
         }
         return res;
+    }
+
+    /**
+     * конвертировать Map<String, List<String>> в Map<String, String>
+     */
+    private static Map<String, String> convertMap(Map<String, List<String>> map) {
+        return map.entrySet().stream()
+                .collect(Collectors.toMap(Map.Entry::getKey, entry -> String.join(",", entry.getValue())));
+    }
+
+    /**
+     * перевернуть Map<Integer, List<Long>> в Map<Long, Integer>
+     */
+    public static Map<Long, Integer> reverseMap(Map<Integer, List<Long>> map) {
+        return map.entrySet().stream()
+                .flatMap(x -> x.getValue().stream()
+                        .map(y -> Map.entry(y, x.getKey())))
+                .collect(toMap(Map.Entry::getKey, Map.Entry::getValue));
     }
 
 }

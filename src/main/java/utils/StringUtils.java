@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 import static utils.NumberUtils.minOfNumbers;
@@ -12,6 +13,7 @@ import static utils.NumberUtils.minOfNumbers;
  * задачки со строками
  */
 public class StringUtils {
+    private static final Pattern CYRILLIC_PATTERN = Pattern.compile("[А-Я]{1}[а-я]+");
 
     /**
      * Заменить повторяющиеся слова множественным числом (+"s")

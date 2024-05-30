@@ -26,8 +26,8 @@ public class RangeNumbers {
         RANGE9(8, 9),
         RANGE10(9, Double.MAX_VALUE);
 
-        public double min;
-        public double max;
+        public final double min;
+        public final double max;
 
         Range(double min, double max) {
             this.min = min;
@@ -55,6 +55,7 @@ public class RangeNumbers {
     public static void main(String[ ] args) {
         double x = 4.5;
         Range range = Range.getRange(x);
+        assert range != null;
         System.out.println(range.toString()); // => Диапазон { min=4.0, max=5.0 }
     }
 }

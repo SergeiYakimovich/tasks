@@ -82,4 +82,35 @@ public class Http {
         }
     }
 
+    public static void captchaRequest() {
+        String token = "testToken";
+        String ip = "0.0.0.0";
+        String urlText = "https://captcha-api.yandex.ru/validate";
+        String serverkey = "testKey";
+        String urlParams = String.format("?secret=%s&token=%s&ip=%s", serverkey, token, ip);
+        String yandexUrl = urlText + urlParams;
+
+        StringBuffer response = new StringBuffer();
+        try {
+            URL url = new URL(yandexUrl);
+            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+            connection.setRequestMethod("GET");
+            int responseCode = connection.getResponseCode();
+            response.append("Response Code : " + responseCode + "\n");
+            BufferedReader reader = new BufferedReader(
+                    new InputStreamReader(connection.getInputStream()));
+            String inputLine;
+            while ((inputLine = reader.readLine()) != null) {
+                response.append(inputLine);
+            }
+            reader.close();
+
+            System.out.println(response);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+//            javax.net.ssl.SSLHandshakeException: PKIX path building failed: sun.security.provider.certpath.SunCertPathBuilderException: unable to find valid certification path to requested target
+        }
+    }
+
 }
