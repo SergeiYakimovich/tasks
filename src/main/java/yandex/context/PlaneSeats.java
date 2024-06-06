@@ -1,7 +1,5 @@
-package yandex.other;
+package yandex.context;
 
-import java.io.IOException;
-import java.nio.file.Paths;
 import java.util.Map;
 import java.util.Scanner;
 

@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 public class ParseUrl {
     public static void main(String[] args) {
+        // получаем данные из стандартного ввода
         Scanner scanner = new Scanner(System.in);
         String inputUrl = scanner.nextLine();
 
@@ -11,10 +12,6 @@ public class ParseUrl {
         String[] urlParts = inputUrl.split("://|/|\\?");
         String protocol = urlParts[0];
         System.out.println("Proto: " + protocol);
-
-        if (urlParts.length < 2) {
-            return;
-        }
 
         // Extract hostname
         String hostname = urlParts[1];
@@ -37,11 +34,12 @@ public class ParseUrl {
             } else {
                 handle = inputUrl.substring(handleBeginIndex);
             }
+
             if (handle.charAt(handle.length() - 1) == '/') {
                 handle = handle.substring(0, handle.length() - 1);
             }
-            System.out.println("Handle: " + handle);
 
+            System.out.println("Handle: " + handle);
 
             if (questionBeginIndex < 0) {
                 return;

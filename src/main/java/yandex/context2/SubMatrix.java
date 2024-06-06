@@ -4,58 +4,65 @@ import java.util.Scanner;
 
 public class SubMatrix {
     public static void main(String[] args) {
+        // получаем данные из стандартного ввода
         Scanner scanner = new Scanner(System.in);
+        countResult(scanner);
+        scanner.close();
+    }
+
+    public static long countResult(Scanner scanner) {
+        // получаем данные
         int n = scanner.nextInt();
         int m = scanner.nextInt();
         scanner.nextLine();
-        char[][] matrix = new char[n][m];
+        int[][] matrix = new int[n][m];
         for (int i = 0; i < n; i++) {
             String line = scanner.nextLine();
-            matrix[i] = line.toCharArray();
-        }
-
-        int count = 0;
-
-        for (int up = 0; up < n; up++) {
-            for (int down = up; down < n; down++) {
-                for (int left = 0; left < m; left++) {
-                    for (int right = left; right < m; right++) {
-                        if (isIdealSubMatrix(matrix, up, down, left, right)) {
-                            count++;
-                        }
-                    }
-                }
+            for (int j = 0; j < m; j++) {
+                matrix[i][j] = line.charAt(j) == '0' ? -1 : 1;
             }
         }
 
-        System.out.println(count);
+        // создаем вспомогательную таблицу
+        int[][] dp = new int[n + 1][m + 1];
+        for (int i = 1; i <= n; i++) {
+            for (int j = 1; j <= m; j++) {
+                dp[i][j] = dp[i-1][j] + dp[i][j-1] - dp[i-1][j-1] + matrix[i-1][j-1];
+            }
+        }
+
+        // считаем количество подматриц
+        int result = 0;
+        for (int up = 1; up <=n; up++) {
+            for (int left = 1; left <= m; left++) {
+
+                int maxSubMatrixSize = (n-up+1)*(m-left+1);
+                for (int down = up; down <= n; down++) {
+                    for (int right = left; (right <= m) ; right++) {
+
+                        int currentSubMatrixSum = subMatrixSum(dp, up, left, down, right);
+                        if (currentSubMatrixSum == 0) {
+                            result++;
+                        } else {
+                            int currentSubMatrixSize = (down - up + 1) * (right - left + 1);
+                            int restMaxSum = maxSubMatrixSize - currentSubMatrixSize;
+                            if (Math.abs(currentSubMatrixSum) > restMaxSum) {
+                                // дальше нет смысла искать подматрицы
+                                break;
+                            }
+                        }
+
+                    }
+                }
+
+            }
+        }
+
+        return result;
     }
 
-    private static boolean isIdealSubMatrix(char[][] matrix, int up, int down, int left, int right) {
-        int size = (down - up + 1) * (right - left + 1);
-        if (size % 2 != 0) {
-            return false;
-        }
-        int halfSize = size / 2;
-        int numZeros = 0;
-        int numOnes = 0;
-
-        for (int i = up; i <= down; i++) {
-            for (int j = left; j <= right; j++) {
-                if (matrix[i][j] == '0') {
-                    if (numZeros == halfSize) {
-                        return false;
-                    }
-                    numZeros++;
-                } else {
-                    if (numOnes == halfSize) {
-                        return false;
-                    }
-                    numOnes++;
-                }
-            }
-        }
-
-        return numZeros == numOnes;
+    private static int subMatrixSum(int[][] dp, int up, int left, int down, int right) {
+        return dp[down][right] - dp[up - 1][right] - dp[down][left - 1] + dp[up - 1][left - 1];
     }
 }
+

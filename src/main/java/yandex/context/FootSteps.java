@@ -1,4 +1,4 @@
-package yandex.other;
+package yandex.context;
 
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
