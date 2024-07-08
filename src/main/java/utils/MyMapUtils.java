@@ -33,8 +33,7 @@ public class MyMapUtils {
                 ));
         System.out.println(sortedMap1); // => {Petr=1990, Egor=1995, Ivan=2000}
 
-        Map<String, Integer> sortedMap2 = new TreeMap<String, Integer>(
-                Comparator.comparing(myMap::get));
+        Map<String, Integer> sortedMap2 = new TreeMap<String, Integer>(Comparator.comparing(myMap::get));
         sortedMap2.putAll(myMap);
 
         System.out.println(sortedMap2); // => {Petr=1990, Egor=1995, Ivan=2000}

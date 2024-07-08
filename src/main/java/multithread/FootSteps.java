@@ -1,4 +1,4 @@
-package yandex.context;
+package multithread;
 
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
@@ -30,8 +30,8 @@ public class FootSteps {
             while (true) {
                 synchronized (lock) {
                     if(name.equals(currentLeg)) {
-                        Thread.sleep(1000);
                         System.out.println(name + " foot is moving");
+                        Thread.sleep(1000);
                         currentLeg = FootName.getNext(currentLeg);
                     }
                 }

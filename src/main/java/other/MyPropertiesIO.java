@@ -1,16 +1,28 @@
 package other;
 
-import java.io.FileInputStream;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.Writer;
+import lombok.Value;
+
+import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
 import java.util.Properties;
 
 import static java.nio.file.Files.writeString;
 
-public class MyIO {
+public class MyPropertiesIO {
+    public static void main(String[] args) throws IOException {
+        String fileName = "test.txt";
+        String text = "Hello!\n";
+
+        Writer myWriter = new FileWriter(fileName, true);
+        myWriter.write(text);
+        myWriter.close();
+
+        writeString(Paths.get(fileName), text, StandardOpenOption.APPEND);
+    }
+
     public static void readProperties() throws IOException {
         Properties prop = new Properties();
         prop.load(new FileInputStream("application.properties"));
@@ -26,16 +38,5 @@ public class MyIO {
 
         prop = System.getProperties();
         System.out.println(prop);
-    }
-
-    public static void main(String[] args) throws IOException {
-        String fileName = "test.txt";
-        String text = "Hello!\n";
-
-        Writer myWriter = new FileWriter(fileName, true);
-        myWriter.write(text);
-        myWriter.close();
-
-        writeString(Paths.get(fileName), text, StandardOpenOption.APPEND);
     }
 }

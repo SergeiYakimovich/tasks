@@ -17,7 +17,7 @@ public class Main {
         filteredFlights = FlightsFiltration.makeFiltration(flights, rools); // фильтруем полеты
         showFlights(filteredFlights); // смотрим результат
 
-        Predicate<Flight> rool2 = FlightsFiltration.DepBeforeArr();
+        Predicate<Flight> rool2 = FlightsFiltration.depBeforeArr();
         rools = List.of(rool2);
         filteredFlights = FlightsFiltration.makeFiltration(flights, rools);
         showFlights(filteredFlights);

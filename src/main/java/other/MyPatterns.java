@@ -1,4 +1,4 @@
-package utils;
+package other;
 
 public class MyPatterns {
 

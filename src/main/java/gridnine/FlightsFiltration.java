@@ -50,7 +50,7 @@ public class FlightsFiltration {
      * Фильтрация всех полетов по сегментам с датой прилёта раньше даты вылета
      * @return правило фильтрации
      */
-    public static Predicate<Flight> DepBeforeArr() {
+    public static Predicate<Flight> depBeforeArr() {
         return x -> {
             for(Segment segment : x.getSegments()) {
                 if(segment.getArrivalDate().isBefore(segment.getDepartureDate())) return false;

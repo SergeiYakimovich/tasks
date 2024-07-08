@@ -1,8 +1,25 @@
-import java.util.Arrays;
-import java.util.Scanner;
+import lombok.Setter;
 
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.math.BigInteger;
+import java.util.*;
+import java.util.concurrent.ThreadLocalRandom;
+
+import static utils.MyMapUtils.sortMapByValue;
+
+@SuppressWarnings("SameParameterValue")
 public class App {
+
+
     public static void main(String[] args) {
+        String s1 = """
+                Petr
+                Egor
+                Ivan
+                """;
+
 
     }
 
