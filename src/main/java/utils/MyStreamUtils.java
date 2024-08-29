@@ -1,15 +1,58 @@
 package utils;
 
 import java.util.*;
+import java.util.function.BiConsumer;
+import java.util.function.Supplier;
+import java.util.stream.Collector;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 /**
  * задачки со стримами
  */
 public class MyStreamUtils {
+    /**
+     * Свой коллектор, собирающий максимальные значения
+     */
+    public static Collector<String, ?, List<String>> maxAll(Comparator<String> comparator) {
+        BiConsumer<List<String>, String> accumulator = (list, s) -> {
+            if (!list.isEmpty()) {
+                int c = comparator.compare(list.get(0), s);
+                if (c > 0) return;
+                if (c < 0) list.clear();
+            }
+            list.add(s);
+        };
+        return Collector.of(
+                ArrayList::new,
+                accumulator,
+                (l1, l2) -> {
+                    l2.forEach(s -> accumulator.accept(l1, s));
+                    return l1;
+                }
+        );
+    }
 
     /**
-     * убрать повторы из тескта - 4 решения
+     * декартово произведение
+     */
+    public static void decartMultiply() {
+        List<List<String>> input = Arrays.asList(
+                Arrays.asList("a", "b", "c"),
+                Arrays.asList("x", "y"),
+                Arrays.asList("1", "2", "3")
+        );
+        Supplier<Stream<String>> s = input.stream()
+                .<Supplier<Stream<String>>>map(list -> list::stream)
+                        .reduce((sup1, sup2) -> () -> sup1.get().flatMap(s1 -> sup2.get().map(s2 -> s1 + s2)))
+                .orElse(() -> Stream.of(""));
+        s.get().forEach(System.out::println);
+
+
+    }
+
+    /**
+     * убрать повторы из текста - 4 решения
      */
     public static void DeleteRepeatedWords() {
         String text = "Ivan Petr Ivan Egor Egor Fedor";

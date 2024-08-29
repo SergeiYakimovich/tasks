@@ -1,6 +1,5 @@
 package utils;
 
-import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
@@ -15,6 +14,17 @@ import static java.util.stream.Collectors.toMap;
  * задачки с мапами
  */
 public class MyMapUtils {
+
+    /**
+     * преобразование списка Map в Map
+     */
+    public static Map<String, List<Integer>> convert(List<Map<String, Integer>> map) {
+        return map.stream()
+                .flatMap(m -> m.entrySet().stream())
+                .collect(Collectors.groupingBy(Map.Entry::getKey,
+                        Collectors.mapping(Map.Entry::getValue, Collectors.toList())));
+
+    }
 
     /**
      * сортировка мап по значению

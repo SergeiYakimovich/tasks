@@ -5,6 +5,7 @@ import lombok.Data;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Proxy;
+import java.util.Arrays;
 import java.util.List;
 
 public class MyReflection {
@@ -65,5 +66,16 @@ public class MyReflection {
 
         Car car4 = new Car(null, "Focus");
         car4.validate();
+    }
+
+    public static void clearString(String password) {
+        try {
+            Field value = String.class.getDeclaredField("value");
+            value.setAccessible(true);
+            byte[] chars = (byte[]) value.get(password);
+            Arrays.fill(chars, (byte) '*');
+        } catch (Exception e) {
+            throw new AssertionError(e);
+        }
     }
 }

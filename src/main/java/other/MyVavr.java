@@ -2,8 +2,8 @@ package other;
 
 import io.vavr.Function5;
 import io.vavr.Tuple;
-import io.vavr.Tuple2;
 import io.vavr.Tuple3;
+import io.vavr.control.Either;
 import io.vavr.control.Try;
 
 public class MyVavr {
@@ -29,5 +29,21 @@ public class MyVavr {
         String finalString = concat.apply(
                 "Hello ", "world", "! ", "Learn ", "Vavr");
         System.out.println(finalString);
+    }
+
+    public static void main(String[] args) {
+        parseInt("12a3")
+                .peek(System.out::println)
+                .peekLeft(System.out::println);
+    }
+
+    private static Either<String, Integer> parseInt(String str) {
+        try {
+            return Either.right(Integer.parseInt(str));
+        } catch (NumberFormatException e) {
+            return Either.left(str + " is not a valid integer");
+        }
+
+//        Try<Integer> integerTry = Try.of(() -> Integer.parseInt(str));
     }
 }

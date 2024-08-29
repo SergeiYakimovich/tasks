@@ -1,9 +1,6 @@
 package utils;
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
@@ -28,6 +25,10 @@ public class MyStringUtils {
                 .map(e -> (int) e.getValue() > 1 ? e.getKey() + "s" : e.getKey())
                 .collect(Collectors.toList());
         return result;
+    }
+
+    public static boolean hasDuplicateCharacters(String word) {
+        return word.chars().distinct().count() < word.length();
     }
 
     /**
@@ -220,7 +221,7 @@ public class MyStringUtils {
     }
 
     /**
-     * переворот строки рекурсией
+     * переворот строки
      */
     public String reverseByRecurs(String str) {
         if(str.length() == 0) {
@@ -228,5 +229,31 @@ public class MyStringUtils {
         } else {
             return reverseByRecurs(str.substring(1)) + str.charAt(0);
         }
+    }
+
+    public static String reverseString(String str) {
+//        if (str.length() <= 1) {
+//            return str;
+//        }
+//        return str.charAt(str.length() - 1) + reverseString(str.substring(0, str.length() - 1));
+
+//        return Arrays.stream(str.split(""))
+//                .reduce("", (a, b) -> b + a);
+
+//        StringBuilder result = new StringBuilder();
+//        for (int i = str.length() - 1; i >= 0; i--) {
+//            result.append(str.charAt(i));
+//        }
+//        return result.toString();
+
+//        return new StringBuilder(str).reverse().toString();
+
+        LinkedList<String> linkedList = new LinkedList<>(Arrays.asList(str.split("")));
+        String result = "";
+        while (!linkedList.isEmpty()) {
+            result += linkedList.removeLast();
+        }
+        return result;
+
     }
 }
