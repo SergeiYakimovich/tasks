@@ -10,8 +10,6 @@ import static utils.MyNumberUtils.minOfNumbers;
  * задачки со строками
  */
 public class MyStringUtils {
-    private static final Pattern CYRILLIC_PATTERN = Pattern.compile("[А-Я]{1}[а-я]+");
-
     /**
      * Заменить повторяющиеся слова множественным числом (+"s")
      * List.of("dog", "cat", "pig", "dog", "pig") -> [cat, dogs, pigs]
@@ -175,7 +173,7 @@ public class MyStringUtils {
         for(int i=0; i < s.length()-1; i++) {
             for(int j=i+1; j <= s.length(); j++) {
                 String next = s.substring(i,j);
-                if(isPalindrom(next)) {
+                if(isPalindrom1(next)) {
                     if(next.length()>max) {
                         max=next.length();
                         str=next;
@@ -190,7 +188,7 @@ public class MyStringUtils {
     /**
      * проверка на палиндром
      */
-    public static boolean isPalindrom(String str) {
+    public static boolean isPalindrom1(String str) {
         if(str.length()==0) {
             return false;
         }
@@ -201,6 +199,29 @@ public class MyStringUtils {
             if(str.charAt(i) != str.charAt(str.length() - 1 - i)) {
                 return false;
             }
+        }
+        return true;
+    }
+
+    public static boolean isPalindrome2(String s) {
+        int i = 0;
+        int j = s.length() - 1;
+        while (i < j) {
+            char left = Character.toLowerCase(s.charAt(i));
+            char right = Character.toLowerCase(s.charAt(j));
+            if (!Character.isLetterOrDigit(left)) {
+                i++;
+                continue;
+            }
+            if (!Character.isLetterOrDigit(right)) {
+                j--;
+                continue;
+            }
+            if (left != right) {
+                return false;
+            }
+            i++;
+            j--;
         }
         return true;
     }

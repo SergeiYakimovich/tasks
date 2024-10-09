@@ -12,22 +12,22 @@ public class DataBase {
         try {
             Class.forName("org.postgresql.Driver");
             connection = DriverManager
-                    .getConnection("jdbc:postgresql://localhost:5432/mydb",
-                            "postgres", "");
+                    .getConnection("jdbc:postgresql://localhost:15432/mydb?currentSchema=base",
+                            "root", "root");
 
             statement = connection.createStatement();
-            ResultSet result = statement.executeQuery( "SELECT * FROM CARS;" );
+//            ResultSet result1 = statement.executeQuery("INSERT INTO base.users(name, address) VALUES ('Jone','Chicago');");
+
+            ResultSet result = statement.executeQuery( "SELECT * FROM USERS;" );
 
             while (result.next()) {
                 String  name = result.getString("name");
-                String  color = result.getString("color");
-                int age  = result.getInt("age");
+                String  address = result.getString("address");
+//                int age  = result.getInt("age");
 
                 System.out.print( "NAME = " + name );
-                System.out.print( "   COLOR = " + color );
-                System.out.println( "   AGE = " + age );
-                // => NAME = VW   COLOR = white   AGE = 3
-                // => NAME = TOYOTA   COLOR = black   AGE = 4
+                System.out.print( "   ADDRESS = " + address );
+//                System.out.println( "   AGE = " + age );
             }
 
             result.close();

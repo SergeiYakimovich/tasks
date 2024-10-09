@@ -4,7 +4,6 @@ package utils;
  * задачи на двоичные функции
  */
 public class MyBinaryUtils {
-
     /**
      * двоичное сложение
      */

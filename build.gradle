@@ -1,5 +1,6 @@
 plugins {
     id 'java'
+//    id 'java-library' для транзитивных зависимостей
     id 'application'
     id 'com.adarshr.test-logger' version '2.1.1'
     id 'maven-publish'
@@ -17,16 +18,24 @@ run {  standardInput = System.in }
 group 'org.example'
 version '1.0-SNAPSHOT'
 
-repositories {
-    mavenCentral()
-    mavenLocal()
-
+//repositories {
 //    flatDir {
 //        dirs 'libs' // for local jars
 //    }
+//}
+
+allprojects {
+    repositories {
+        mavenCentral()
+        mavenLocal()
+    }
+}
+
+subprojects {
 }
 
 dependencies {
+    implementation 'org.jetbrains:annotations:23.0.0'
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
     testImplementation 'org.projectlombok:lombok:1.18.22'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
@@ -64,6 +73,11 @@ dependencies {
     implementation("code:rsa:1.0-SNAPSHOT")
     // https://sky.pro/media/dobavlenie-lokalnoj-jar-zavisimosti-v-fajl-build-gradle/
 
+    implementation('org.hibernate.validator:hibernate-validator:8.0.0.Final') {
+//        exclude group: 'org.jboss.logging', module: 'jboss-logging'
+//        transitive = false
+    }
+//    api project(':tasks') для транзитивных зависимостей
 }
 
 test {
@@ -77,3 +91,17 @@ testlogger {
 tasks.withType(JavaCompile) {
     options.encoding = "UTF-8"
 }
+
+// Плагины Gradle
+
+//apply from: 'script.gradle'
+//apply plugin: MyPlugin
+//
+//class MyPlugin implements Plugin<Project> {
+//    @Override
+//    void apply(Project project) {
+//        println "Hello from MyPlugin"
+//    }
+//}
+//JavaPlugin javaPlugin = project.getPlugins().getPlugin(JavaPlugin)
+//println javaPlugin.getClass().getName()

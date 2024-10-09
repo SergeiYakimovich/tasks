@@ -1,0 +1,21 @@
+tasks.register('task1') {
+    doLast {
+        println 'Hello from task1'
+    }
+}
+
+tasks.register('task2') {
+    doLast {
+        println 'Hello from task2'
+    }
+}
+
+task2.finalizedBy(task1)
+
+gradle.taskGraph.whenReady(
+        taskGraph -> {
+            println "Task graph is ready"
+            taskGraph.allTasks.each(
+                    task -> println "Task ${task.name} is ${task.state.toString()}")
+        }
+)

@@ -1,10 +1,10 @@
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.mockito.Mockito.*;
 import static utils.MyNumberUtils.sortNumberByDigits;
 
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.Mock;
-import org.mockito.MockedStatic;
-import org.mockito.Mockito;
+import org.junit.jupiter.params.provider.NullSource;
+import org.mockito.*;
 import org.mockito.junit.jupiter.MockitoExtension;
 import utils.MyNumberUtils;
 
@@ -17,11 +17,18 @@ import utils.MyStringUtils;
 class AppTest {
     @Mock
     MyStringUtils stringUtils;
+    @Captor
+    ArgumentCaptor<String> captor;
     @Test
     void testMockito1() {
-        Mockito.doReturn("!!!").when(stringUtils).reverseByRecurs(Mockito.anyString());
+        doReturn("!!!").when(stringUtils).reverseByRecurs(Mockito.anyString());
+
         String result = stringUtils.reverseByRecurs("123");
+
         assertThat(result).isEqualTo("!!!");
+        verify(stringUtils, times(1)).reverseByRecurs(captor.capture());
+        String value = captor.getValue();
+        assertThat(value).isEqualTo("123");
     }
 
     @Test
@@ -77,6 +84,24 @@ class AppTest {
     void testSortMinOfNumbers(int a, int b, int c, int expected) {
         int result = MyNumberUtils.minOfNumbers(a, b, c);
         assertThat(expected).isEqualTo(result);
+    }
+
+    @ParameterizedTest
+    @CsvSource({
+            "А роза упала на лапу Азора, true",
+            "1231, false",
+            "@А %роза упала на лапу !А зора, true",
+    })
+    void testSortMinOfNumbers(String str, boolean expected) {
+        boolean result = MyStringUtils.isPalindrome2(str);
+        assertThat(result).isEqualTo(expected);
+    }
+
+    @ParameterizedTest
+    @NullSource
+    @CsvSource("123")
+    void testNullSource(String str) {
+        System.out.println(str);
     }
 
 }

@@ -3,8 +3,14 @@ package utils;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 
 public class MyOtherUtils {
+    /**
+     * декартово произведение
+     */
     public static void decartMultiply() {
         List<List<String>> input = Arrays.asList(
                 Arrays.asList("a", "b", "c"),
@@ -26,5 +32,20 @@ public class MyOtherUtils {
 
     }
 
+    /**
+     * поиск элемента, встречающегося больше 50% в массиве
+     */
+    public int majorityElement(int[] nums) {
+        int n = nums.length / 2;
+        return Arrays.stream(nums)
+                .boxed()
+                .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()))
+                .entrySet()
+                .stream()
+                .filter(e -> e.getValue() > n)
+                .map(Map.Entry::getKey)
+                .findFirst()
+                .orElse(-1);
+    }
 
 }
