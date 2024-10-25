@@ -1,5 +1,7 @@
 package utils;
 
+import lombok.extern.slf4j.Slf4j;
+
 import java.util.*;
 import java.util.function.BiConsumer;
 import java.util.function.Supplier;
@@ -58,7 +60,7 @@ public class MyStreamUtils {
         String text = "Ivan Petr Ivan Egor Egor Fedor";
 
         String modifiedText = Arrays.stream(text.split(" "))
-                .collect(Collectors.toMap(i -> i, i -> 1, (a, b) -> a+b, LinkedHashMap::new))
+                .collect(Collectors.toMap(i -> i, i -> 1, Integer::sum, LinkedHashMap::new))
 //                .collect(LinkedHashMap<String, Integer>::new, (m, c) ->
 //                {m.put(c, m.containsKey(c) ? (1 + m.get(c)) : 1);}, HashMap::putAll)
 //                .collect(Collectors.groupingBy(x -> x, LinkedHashMap::new, Collectors.counting()))

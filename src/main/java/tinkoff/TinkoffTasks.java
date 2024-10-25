@@ -53,10 +53,10 @@ public class TinkoffTasks {
             System.out.println(minA + " " + minB);
         }
 
-        public static int nok(int a, int b) {
+        public static int nok(int a, int b) { // НОК (наименьшее общее кратное)
             return a * b / nod(a,b);
         }
-        public static int nod(int x1, int x2) {
+        public static int nod(int x1, int x2) { // НОД (наибольший общий делитель)
             int min = x1<x2 ? x1 : x2;
             for (int i=min; i>=2; i--) {
                 if (x1 % i == 0 && x2 % i == 0) {
@@ -64,6 +64,15 @@ public class TinkoffTasks {
                 }
             }
             return 1;
+        }
+
+        public static int mostCommonMultiple(int x, int y) { // НОД (наибольший общий делитель)
+            if (x<=0 || y<=0) throw new UnsupportedOperationException("Incorrect input");
+            while(x!=0 && y!=0){
+                if (x>y) x=x%y;
+                else y=y%x;
+            }
+            return x+y;
         }
     }
 

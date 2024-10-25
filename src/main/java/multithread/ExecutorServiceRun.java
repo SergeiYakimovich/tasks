@@ -8,7 +8,7 @@ import java.util.concurrent.*;
 public class ExecutorServiceRun {
     public static void main(String[] args) throws ExecutionException, InterruptedException {
         long startTime = System.currentTimeMillis();
-//        ExecutorService cachedThreadPool = Executors.newCachedThreadPool();
+        ExecutorService cachedThreadPool = Executors.newCachedThreadPool();
 
 //        ForkJoinPool forkJoinPool = new ForkJoinPool();
 //        forkJoinPool.invoke(new MyTask());
@@ -16,7 +16,7 @@ public class ExecutorServiceRun {
         List<Future<Integer>> result = new ArrayList<>();
         try (MyExecutorService executorService = new MyExecutorService(10)) {
             for (int i = 0; i < 100000; i++) {
-//                result.add(executorService.submit(new MyCallable()));
+                result.add(executorService.submit(new MyCallable()));
             }
         }
 

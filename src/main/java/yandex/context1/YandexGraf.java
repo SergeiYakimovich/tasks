@@ -63,7 +63,7 @@ public class YandexGraf {
         return head;
     }
 
-    public static Node findNode(Node top, int val) {
+    public static Node findNode(Node top, int val) { // поиск вершины
         if(top == null) return null;
         Queue<Node> queue=new LinkedList<> ();
         while(true) {
@@ -84,7 +84,7 @@ public class YandexGraf {
 
         }
     }
-    public static void showGraf(Node top) {
+    public static void showGraf(Node top) { // обход графа
         if(top == null) return;
         Queue<Node> queue=new LinkedList<>();
         while(true) {

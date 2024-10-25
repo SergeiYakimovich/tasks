@@ -1,18 +1,17 @@
-import java.time.LocalDate;
 import java.util.*;
-import java.util.stream.Collectors;
+import java.util.stream.*;
 
 @SuppressWarnings("SameParameterValue")
 public class App {
+    public static void main(String[] args) {
+        Map<String, String> map = new HashMap<>();
+        List<String> list = new ArrayList<>();
 
-    public static void main(String[] args) throws Exception {
-        Queue<Integer> queue = new PriorityQueue<>();
-        SortedSet<String> sortedSet = new TreeSet<String>();
+
 
 
 
     }
-
 
 }
 
